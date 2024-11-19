@@ -1,0 +1,92 @@
+<div class="category-banner mb-4">
+  <div class="container h-100">
+    <div class="d-flex justify-content-between align-items-center h-100">
+      <div class="left">
+        <div class="bredcrumb">
+          <a href="#">Home</a> > <span>Manage Order History</span>
+        </div>
+        <h2 class="category-name">Manage Order History</h2>
+      </div>
+      <div class="right h-100">
+        <figure>
+          <img class="category-img mx-5" src="../../../../assets/images/svg-icons/manage-order-history-icon.svg"
+            alt="" />
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="manage-order-history">
+  <div class="container">
+    <!-- Recent Order History Section -->
+    <div class="row">
+      <div class="col-12">
+        <h4 class="form-section-title mb-0">
+        </h4>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order Information</th>
+                <th>Total Items</th>
+                <th>Subtotal</th>
+                <th>VAT</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Loop through your order history data and generate rows -->
+              <tr *ngFor="let order of ordersSummary.slice().reverse()">
+
+                <td>{{ order.orderDate }}<br>Order #: {{ order.orderId }}</td>
+                <td>{{ order.totalItems }} </td>
+                <td>{{ order.subtotal | currency: 'GBP' }}</td>
+                <td>{{ order.vat | currency: 'GBP' }}</td>
+                <td>{{ order.total | currency: 'GBP' }}</td>
+                <td>
+                  <!-- <button class="btns-primary" [routerLink]="['/view-order', order.orderId]" style="font-size: 15px; height: 30px">View</button> -->
+                  <button class="btns-primary" (click)="openOrderInNewTab(order.orderId)"
+                    style="font-size: 15px; height: 30px"> View</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="text-center mt-5" *ngIf="ordersSummary.length === 0">
+          <div class="alert-box alert-box-warning mx-3 border-none">
+            There are no orders related to your account that are currently available to view.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Pagination -->
+  <div class="pagination-container pb-0 pb-0">
+    <div class="divider mt-2"></div>
+    <div class="d-flex flex-wrap justify-content-between align-items-center pagination-inner">
+      <div class="page-length">
+        <span class="font-bold">Show:</span> {{ orders?.products?.length }} items | Page {{ currentPage }} of {{
+        getTotalPages() }}
+      </div>
+      <div class="pagination">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-pagination" (click)="goToFirstPage()"><i class="fas fa-angle-double-left"></i></button>
+          <button class="btn btn-pagination" (click)="goToPreviousPage()"><i class="fas fa-angle-left"></i></button>
+          <ng-container *ngFor="let page of getPaginationRange()">
+            <button class="btn btn-pagination" [class.active]="page === currentPage" (click)="onPageChange(page)">
+              {{ page }}
+            </button>
+          </ng-container>
+          <button class="btn btn-pagination" (click)="goToNextPage()"><i class="fas fa-angle-right"></i></button>
+          <button class="btn btn-pagination" (click)="goToLastPage()"><i class="fas fa-angle-double-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

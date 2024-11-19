@@ -1,0 +1,32 @@
+// app-print-order {
+//     /* hide the printing component from @media screen */
+//     display: none !important; 
+//   }
+  
+//   @media print {
+//     /* invert the display (show/hide) properties of the main */
+//     /* aplication component and the printing component       */
+//     app-print-order{
+//       display: block !important;
+//     }
+  
+//     login-popup complete-order-popup  {
+//       display: none !important;
+//     }
+//   }
+
+.complete-order-popup {
+    .popup-content {
+      .print-order-hidden {
+        display: none; // Hide the component initially
+      }
+    }
+  }
+
+
+/* Add a new class to apply styles when the printOrderComponent is visible */
+@media print {
+  .print-order-visible {
+    display: block !important; // Make the component visible when printing
+  }
+}

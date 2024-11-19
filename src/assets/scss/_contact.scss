@@ -1,0 +1,209 @@
+.contact-top-content {
+  background: rgba($maximum-red-color, $alpha: 0.07);
+  @include border-radius(0.4375rem);
+
+  p {
+    color: $black-color;
+    text-align: center;
+    font-size: $font-size-medium;
+    font-weight: $font-regular;
+    line-height: 1.25rem;
+  }
+
+  h4 {
+    color: $maximum-purple-color;
+    margin: 0 0 1rem;
+    text-align: center;
+    font-size: $font-size-xl-medium;
+    font-weight: $font-medium;
+    line-height: 1.25rem;
+  }
+}
+
+.google-map-container {
+  .section-title {
+    h2 {
+      color: rgba($color: $black-color, $alpha: 0.7);
+      font-size: $font-size-large;
+      font-weight: $font-semibold;
+      line-height: normal;
+    }
+  }
+
+  .map-outer {
+    @include border-radius(0.625rem 0.625rem 0 0);
+    overflow: hidden;
+  }
+}
+
+.address-container {
+  @include border-radius(0 0 0.625rem 0.625rem);
+  background: $japanese-violet-color;
+  color: $white-color;
+  padding: 2.875rem 1.875rem 10.625rem;
+  margin: -0.375rem 0 0;
+
+  .row {
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 0.0625rem;
+      height: $full-height;
+      background: rgba($white-color , $alpha: 0.35);
+      position: absolute;
+      left: 50%;
+      top: 0;
+
+      @media (max-width: $break-mobile) {
+        display: none;
+      }
+    }
+
+    .divider {
+      background: rgba($white-color , $alpha: 0.35);
+      height: 0.0625rem;
+    }
+  }
+
+  .section-title {
+    h2 {
+      color: $white-color;
+      font-size: $font-size-large;
+      font-weight: $font-semibold;
+      line-height: normal;
+    }
+  }
+
+  .address-box {
+    margin: 0 0 1.5rem;
+
+    .icon {
+      text-align: center;
+      padding: 0.1875rem 0;
+      font-size: $font-size-xl-medium;
+      margin: 0 0.625rem 0 0;
+      color: $deep-amethyst-color;
+    }
+
+    h4 {
+      color: $pastel-orange-color;
+      font-size: $font-size-medium;
+      font-weight: $font-medium;
+      line-height: 1.5625rem;
+      margin: 0;
+    }
+
+    @media (min-width:768px) {
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  p {
+    color: $white-color;
+    font-size: $font-size-xl-medium;
+    font-weight: $font-medium;
+    line-height: 1.5625rem;
+    margin: 0;
+
+    a {
+      color: $white-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    @media (max-width:$break-mobile) {
+      font-size: $font-size-medium;
+    }
+
+  }
+
+  @media (max-width:$break-mobile) {
+    padding: 2.875rem 1.875rem 1.375rem;
+  }
+}
+
+.contact-form-container {
+  margin: -7.5rem 0 5.625rem;
+
+  .section-title {
+    text-align: center;
+    margin: 0 0 1.5rem;
+
+    h2 {
+      color: rgba($color: $black-color, $alpha: 0.7);
+      font-size: $font-size-large;
+      font-weight: $font-semibold;
+      line-height: normal;
+    }
+  }
+
+  .contact-form {
+    background: $white-color;
+    padding: 2.25rem 1.875rem 2.5rem;
+    @include border-radius(0.625rem);
+    @include box-shadow(0 0.375rem 1.5625rem rgba(0, 0, 0, 0.15));
+
+    .form-group-container {
+      label {
+        color: $black-color;
+        font-size: $font-size-medium;
+        font-weight: $font-regular;
+        margin: 0 0 0.5rem;
+      }
+
+      .form-control {
+        border: solid 0.0625rem $platinum-color;
+        @include box-shadow(0px 3px 5px rgba(0, 0, 0, 0.1));
+        height: 2.375rem;
+        color: $spanish-gray-color;
+        font-size: $font-size-xl-regular;
+        font-weight: $font-regular;
+
+        &:focus {
+          color: $black-color;
+        }
+      }
+
+      textarea.form-control {
+        height: 4.75rem;
+      }
+    }
+  }
+
+  @media (max-width: $break-mobile) {
+    margin: 1.875rem 0 5.625rem;
+  }
+}
+
+/* re-captcha */
+.re-captcha {
+  re-captcha {
+    div {
+
+      @include transform(scale(0.95));
+      transform-origin: 0 0;
+
+      @media (max-width: $break-medium) {
+        @include transform(scale(0.77));
+        transform-origin: 0 0;
+
+        @media (max-width: $break-tablet) {
+          @include transform(scale(1));
+          transform-origin: 0 0;
+        }
+
+        @media (max-width: $break-extra-small) {
+          @include transform(scale(0.89));
+          transform-origin: 0 0; 
+        }
+      }
+    }
+  }
+}
+
+/* re-captcha /end */

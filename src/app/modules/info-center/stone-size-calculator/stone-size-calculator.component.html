@@ -1,0 +1,126 @@
+<div class="category-banner mb-4">
+  <div class="container h-100">
+    <div class="d-flex justify-content-between align-items-center h-100">
+      <div class="left">
+        <div class="bredcrumb">
+          <!-- <a href="#">Home</a> > <span>Stone Size Calculator</span> -->
+          <a routerLink="/">Home</a> >
+          <a routerLink="/info">Information Centre</a> >
+          <a routerLink="['stone-size-calculator']">Stone Size Calculator</a>
+        </div>
+        <h2 class="category-name">Stone Size Calculatorr</h2>
+      </div>
+      <div class="right h-100">
+        <figure>
+          <img class="category-img mx-5" src="../../../../assets/images/dashboad-icon.png" alt="" />
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <p>Calculate the carat weight of a gemstone based on its dimensions.</p>
+  <p> Please note that all given weights, sizes and calculations are for guidance only.</p>
+  <div class="account-forms edit-account-forms pb-5 pt-2">
+    <div class="form-fields-cotainer">
+      <div class="form-fields">
+        <div class="row">
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label for="stoneType">Stone Type:</label>
+              <select class="form-select" id="stoneType" name="stoneType" [(ngModel)]="stoneType"
+                (change)="onStoneTypeChange()">
+                <ng-container *ngFor="let stone of stoneDetails">
+                  <option *ngIf="stone.type === 1" [value]="stone.value">{{ stone.name }}</option>
+                </ng-container>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label for="shape">Shape:</label>
+              <select class="form-select" id="shape" name="shape" [(ngModel)]="shape" (change)="onShapeChange()">
+                <ng-container *ngFor="let stone of stoneDetails">
+                  <option *ngIf="stone.type === 2" [value]="stone.value">{{ stone.name }}</option>
+                </ng-container>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label for="length">Length (mm):</label>
+              <input class="form-control" type="number" id="length" name="length" [(ngModel)]="length"
+                (input)="calculateWeight()">
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label for="width">Width (mm):</label>
+              <input class="form-control" type="number" id="width" name="width" [(ngModel)]="width"
+                (input)="calculateWeight()">
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label for="depth">Depth (mm):</label>
+              <input class="form-control" type="number" id="depth" name="depth" [(ngModel)]="depth"
+                (input)="calculateWeight()">
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label class="d-block">Weight:</label>
+              <h2>{{ weight | number:'1.2-2' }} carats</h2>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-6 col-xl-4">
+                <div class="form-group mb-4">
+                    <label for="stoneType">Stone Type:</label>
+                    <select class="form-select" id="stoneType" name="stoneType" [(ngModel)]="stoneType">
+                        <ng-container *ngFor="let stone of stoneDetails">
+                            <option *ngIf="stone.type === 1" [value]="stone.stoneId">{{ stone.name }}</option>
+                        </ng-container>
+                    </select>
+                </div>
+              </div>
+              <div class="col-md-6 col-xl-4">
+                <div class="form-group mb-4">
+                    <label for="shape">Shape:</label>
+                    <select class="form-select" id="shape" name="shape" [(ngModel)]="shape">
+                        <ng-container *ngFor="let stone of stoneDetails">
+                            <option *ngIf="stone.type === 2" [value]="stone.stoneId">{{ stone.name }}</option>
+                        </ng-container>
+                    </select>
+                </div>
+              </div>
+              <div class="col-md-6 col-xl-4">
+                <div class="form-group mb-4">
+                  <label for="length">Length (mm):</label>
+                  <input class="form-control" type="number" id="length" name="length" [(ngModel)]="length">
+                </div>
+              </div>
+              <div class="col-md-6 col-xl-4">
+                <div class="form-group mb-4">
+                    <label for="width">Width (mm):</label>
+                    <input class="form-control" type="number" id="width" name="width" [(ngModel)]="width">
+                </div>
+              </div>
+              <div class="col-md-6 col-xl-4">
+                <div class="form-group mb-4">
+                    <label for="depth">Depth (mm):</label>
+                    <input class="form-control" type="number" id="depth" name="depth" [(ngModel)]="depth">
+                </div>
+              </div>
+              <div class="col-md-6 col-xl-4">
+                <div class="form-group mb-4">
+                  <label class="d-block">Weight:</label>
+                  <h2>{{ weight | number:'1.2-2' }} carats</h2>
+                </div>
+              </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

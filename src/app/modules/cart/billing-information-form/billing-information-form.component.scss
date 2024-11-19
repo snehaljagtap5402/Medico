@@ -1,0 +1,5 @@
+.btns-primary[disabled] {
+    opacity: 0.5; /* reduce opacity to visually indicate disabled state */
+    cursor: not-allowed; /* change cursor to indicate non-interactivity */
+    /* optionally add other styles to visually indicate disabled state */
+  }

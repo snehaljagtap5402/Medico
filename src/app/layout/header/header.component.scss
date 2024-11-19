@@ -1,0 +1,22 @@
+/** No CSS for this example */
+.customClass{
+  background: red;
+}
+
+::ng-deep .custom-class {
+
+  background-color: red!important;
+}
+
+
+/* Your other styles */
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+.menu{
+  max-height:325px;
+    overflow-y:scroll;
+}

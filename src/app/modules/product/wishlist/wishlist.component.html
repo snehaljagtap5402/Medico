@@ -1,0 +1,128 @@
+<div class="container">
+  <div class="category-banner mb-4">
+    <div class="container h-100">
+      <div class="d-flex justify-content-between align-items-center h-100">
+        <div class="left">
+          <div class="bredcrumb">
+            <a href="#">Home</a> > <span>Wishlist</span>
+          </div>
+          <h2 class="category-name">Wishlist</h2>
+        </div>
+        <div class="right h-100">
+          <figure class="d-flex align-items-center">
+            <img class="category-img mx-5" src="../../../../assets/images/shoping-cart-img.png" alt="" />
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <!-- Pagination -->
+  <div class="pagination-container pb-0 pb-0">
+    <div class="divider mt-2"></div>
+    <div class="d-flex flex-wrap justify-content-between align-items-center pagination-inner">
+      <div class="page-length">
+        <span class="font-bold">Show:</span>
+        <select id="itemsPerPage" [(ngModel)]="itemsPerPage" (change)="onItemsPerPageChange()"
+          class="form-control form-select pager-dropdown">
+          <option value="15">15</option>
+          <option value="30">30</option>
+          <option value="45">45</option>
+          <option value="60">60</option>
+          <option value="90">90</option>
+        </select>
+        items | Page {{ currentPage }} of {{ getTotalPages() }}
+      </div>
+      <div class="pagination">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-pagination" (click)="goToFirstPage()"><i class="fas fa-angle-double-left"></i></button>
+          <button class="btn btn-pagination" (click)="goToPreviousPage()"><i class="fas fa-angle-left"></i></button>
+          <ng-container *ngFor="let page of getPaginationRange()">
+            <button class="btn btn-pagination" [class.active]="page === currentPage" (click)="onPageChange(page)">
+              {{ page }}
+            </button>
+          </ng-container>
+          <button class="btn btn-pagination" (click)="goToNextPage()"><i class="fas fa-angle-right"></i></button>
+          <button class="btn btn-pagination" (click)="goToLastPage()"><i class="fas fa-angle-double-right"></i></button>
+        </div>
+      </div>
+      <div class="page-dropdown">
+        <span class="font-bold">Sort Items by:</span>
+        <select class="form-control form-select" [(ngModel)]="selectedSortOption" (change)="onSortOptionChange()">
+          <option value="popular">Popularity</option>
+          <option value="newest">Newest Items</option>
+        </select>
+      </div>
+    </div>
+    <div *ngIf="selectedSortOption === 'newest' && (!paginatedProducts || paginatedProducts.length === 0)"
+      class="text-center mt-5">
+      <div class="alert-box alert-box-warning mx-3 border-none">
+        There are no newest records related with this category.
+      </div>
+    </div>
+  </div>
+  <div class="mt-0 mb-5">
+    <div class="product-row">
+      <div class="row">
+        <ng-container *ngIf="paginatedProducts && paginatedProducts.length > 0; else noProductsFound">
+          <div *ngFor="let product of wishlistProducts" class="col-md-6 col-lg-3">
+            <div class="product-boxes">
+              <app-product-card [product]="product"></app-product-card>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #noProductsFound>
+          <div class="alert-box alert-box-warning mx-3 border-none text-center">
+            <p>
+              There are no items in your wishlist.</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container pb-0 pb-0">
+      <div class="divider mt-2"></div>
+      <div class="d-flex flex-wrap justify-content-between align-items-center pagination-inner">
+
+        <div class="page-length">
+          <span class="font-bold">Show:</span>
+          <select id="itemsPerPage" [(ngModel)]="itemsPerPage" (change)="onItemsPerPageChange()"
+            class="form-control form-select pager-dropdown">
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="45">45</option>
+            <option value="60">60</option>
+            <option value="90">90</option>
+          </select>
+          items | Page {{ currentPage }} of {{ getTotalPages() }}
+        </div>
+        <div class="pagination">
+          <div class="d-flex align-items-center">
+            <button class="btn btn-pagination" (click)="goToFirstPage()"><i
+                class="fas fa-angle-double-left"></i></button>
+            <button class="btn btn-pagination" (click)="goToPreviousPage()"><i class="fas fa-angle-left"></i></button>
+
+            <ng-container *ngFor="let page of getPaginationRange()">
+              <button class="btn btn-pagination" [class.active]="page === currentPage" (click)="onPageChange(page)">
+                {{ page }}
+              </button>
+            </ng-container>
+
+            <button class="btn btn-pagination" (click)="goToNextPage()"><i class="fas fa-angle-right"></i></button>
+            <button class="btn btn-pagination" (click)="goToLastPage()"><i
+                class="fas fa-angle-double-right"></i></button>
+          </div>
+        </div>
+        <div class="page-dropdown">
+          <span class="font-bold">Sort Items by:</span>
+          <select class="form-control form-select" [(ngModel)]="selectedSortOption" (change)="onSortOptionChange()">
+            <option value="popular">Popularity</option>
+            <option value="newest">Newest Items</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

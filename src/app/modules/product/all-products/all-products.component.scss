@@ -1,0 +1,21 @@
+.carousel-control-prev, .carousel-control-next {
+  width: 45px;
+  height: 45px;
+  top: 50%;
+  background: rgba($color: #fff, $alpha: 0.8) ;
+  border-radius: 100px;
+  margin-top: -40px;
+  .icon {
+    background: url(../../../../assets/images/slider-arrow.png) no-repeat 0 0;
+    width: 9px;
+    height: 15px;
+    display: flex;
+  }
+  &.carousel-control-prev {
+    left: 24px;
+  }
+  &.carousel-control-next {
+    right: 24px;
+    transform: rotate(180deg);
+  }
+}

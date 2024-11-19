@@ -1,0 +1,180 @@
+<div class="category-banner mb-4">
+  <div class="container h-100">
+    <div class="d-flex justify-content-between align-items-center h-100">
+      <div class="left">
+        <div class="bredcrumb">
+          <a href="#">Home</a> > <span>{{ editMode ? "Update User Detail" : "Add User Detail" }}</span>
+        </div>
+        <h2 class="category-name">
+          {{ editMode ? "Update User Detail" : "Add User Detail" }}
+        </h2>
+      </div>
+      <div class="right h-100">
+        <figure>
+          <img class="category-img mx-5" src="../../../../assets/images/dashboad-icon.png" alt="" />
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container account-forms edit-account-forms pb-5 pt-2">
+  <div class="col-xs-12">
+    <form [formGroup]="userForm" (ngSubmit)="saveUserDetails()">
+      <div>
+        <div class="form-fields-cotainer">
+          <h4 class="form-section-title mb-3">
+            <div class="d-flex align-items-center">
+              <span class="section-title-icon me-2">
+                <img src="../../../../assets/images/svg-icons/account-details-icon.svg" />
+              </span>
+              <span>User Details</span>
+            </div>
+          </h4>
+          <div class="form-fields">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label>First Name<span class="required-text">*</span></label>
+                  <input type="text" class="form-control" formControlName="firstName">
+                  <small class="text-danger error" *ngIf="isInvalid('firstName', 'required')">
+                    First name is required
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('firstName', 'pattern')">
+                    Only alphabets are allowed
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('firstName', 'minlength')">
+                    Minimum length is 1 character
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('firstName', 'maxlength')">
+                    Maximum length is 50 characters
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('firstName', 'noWhitespace')">
+                    Spaces are not allowed
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('firstName', 'noNumbers')">
+                    Numbers are not allowed
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('firstName', 'noSpecialCharacters')">
+                    Special characters (except /) are not allowed
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label>Last Name<span class="required-text">*</span></label>
+                  <input type="text" class="form-control" formControlName="lastName">
+                  <small class="text-danger error" *ngIf="isInvalid('lastName', 'required')">
+                    Last name is required
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('lastName', 'pattern')">
+                    Only alphabets are allowed
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('lastName', 'minlength')">
+                    Minimum length is 1 character
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('lastName', 'maxlength')">
+                    Maximum length is 50 characters
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('lastName', 'noWhitespace')">
+                    Spaces are not allowed
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('lastName', 'noNumbers')">
+                    Numbers are not allowed
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('lastName', 'noSpecialCharacters')">
+                    Special characters (except /) are not allowed
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label>Email<span class="required-text">*</span></label>
+                  <input type="email" class="form-control" formControlName="email" [readonly]="editMode"
+                    [ngClass]="{'readonly': editMode}" />
+                  <small class="text-danger error" *ngIf="isInvalid('email', 'required')">
+                    Email is required
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('email', 'pattern')">
+                    Please enter a valid email address
+                  </small>
+                </div>
+              </div>
+
+
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label>Phone<span class="required-text">*</span></label>
+                  <input type="text" class="form-control" formControlName="phoneNumber">
+                  <small class="text-danger error" *ngIf="isInvalid('phoneNumber', 'required')">
+                    Phone number is required
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('phoneNumber', 'pattern')">
+                    Please enter a valid phone number (numeric, minimum 10 digits)
+                  </small>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-md-6">
+              <div class="form-group mb-4">
+                <label>
+                  <input type="checkbox" formControlName="isSuperAdmin"> Is Super Admin
+                </label>
+              </div>
+            </div>
+             -->
+            <!-- <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <button class="btns-primary btns-sm" *ngIf="editMode">
+                    Change Password
+                  </button>
+
+                  <div *ngIf="!editMode">
+                    <label>Password<span class="required-text">*</span></label>
+                    <input type="password" class="form-control" formControlName="password">
+                    <small class="text-danger error" *ngIf="isInvalid('password', 'required')">
+                      Password is required
+                    </small>
+                    <small class="text-danger error" *ngIf="isInvalid('password', 'minlength')">
+                      Password must be at least 8 characters long
+                    </small>
+                    <small class="text-danger error" *ngIf="isInvalid('password', 'pattern')">
+                      Password must contain at least one uppercase letter, one lowercase letter, one digit, and one
+                      special character
+                    </small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <div *ngIf="!editMode">
+                    <label>Confirm Password<span class="required-text">*</span></label>
+                    <input type="password" class="form-control" formControlName="confirmPassword">
+                    <small class="text-danger error" *ngIf="isInvalid('confirmPassword', 'required')">
+                      Confirm Password is required
+                    </small>
+                    <small class="text-danger error" *ngIf="userForm.hasError('passwordsMismatch')">
+                      Passwords do not match
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="mt-4 mb-5 d-flex flex-wrap justify-content-center justify-content-sm-end gap-3">
+          <button class="btns-primary" [routerLink]="['/admin/users']">
+            <span class="btn-icon rotate-180"></span> Cancel
+          </button>
+          <button type="submit" class="btns-primary">
+            {{ editMode ? 'Update User' : 'Add User' }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

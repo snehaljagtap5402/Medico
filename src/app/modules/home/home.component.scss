@@ -1,0 +1,71 @@
+.carousel-control-prev, .carousel-control-next {
+    width: 2.8125rem;
+    height: 2.8125rem;
+    top: 50%;
+    background: rgba($color: #fff, $alpha: 0.8) ;
+    border-radius: 100%;
+    margin-top: -1.375rem;
+    .icon {
+      background: url(../../../assets/images/slider-arrow.png) no-repeat 0 0;
+      width: 0.5625rem;
+      height: 0.9375rem;
+      display: flex;
+    }
+    &.carousel-control-prev {
+      left: 1.5rem;
+    }
+    &.carousel-control-next {
+      right: 1.5rem;
+      transform: rotate(180deg);
+    }
+  }
+
+.carousel-item {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.5s ease; /* Add transition for a smooth fade effect */
+}
+
+.carousel-item.active {
+  position: relative;
+  opacity: 1;
+  transition: opacity 0.5s ease; /* Add transition for a smooth fade effect */
+}
+
+.carousel-inner {
+  position: relative;
+  overflow: hidden;
+  width: 100%; /* Ensure the container's width fits the image */
+}
+
+/* Adjust the positioning of images */
+.carousel-item img {
+  width: 100%;
+  height: auto;
+}
+
+/* Set initial positioning */
+.carousel-item {
+  left: 0;
+  display: none;
+  position: absolute;
+  &.active {
+    display: block;
+  }
+}
+
+/* Apply animation for sliding effect */
+@keyframes slideIn {
+  from {
+    left: 100%; /* Slides in from the right */
+  }
+  to {
+    left: 0; /* Slides to original position */
+  }
+}
+
+.carousel-item {
+  &.active {
+    animation: slideIn 0.7s ease forwards;
+  }
+}

@@ -1,0 +1,19 @@
+<div class="login-popup complete-order-popup" *ngIf="orderDetails">
+    <div class="content">
+        <div class="popup-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Checkout Complete</h1>
+                <span class="close-icon" (click)="closePopup()">&#10006;</span>
+            </div>
+        </div>
+        <div class="popup-content p-4">
+            <p>Your completed order has been successfully received!</p>
+            <h3>Order Number: {{ orderNo }}<br>
+                An order confirmation has been email to <span>{{ billingDetails[0]?.accountDetails?.email }}</span>.
+            </h3>
+            <p>If you have any queries about your order, please contact us quoting the order number {{ orderNo }}</p>
+            <button class="btns-primary btns-sm mt-4" (click)="navigateToDashboard()"
+                (click)="openOrderInNewTab(orderNo)" (click)="closePopup()">View / print your order</button>
+        </div>
+    </div>
+</div>

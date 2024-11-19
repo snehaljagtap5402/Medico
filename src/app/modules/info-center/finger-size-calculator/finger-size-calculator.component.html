@@ -1,0 +1,107 @@
+<div class="category-banner mb-4">
+  <div class="container h-100">
+    <div class="d-flex justify-content-between align-items-center h-100">
+      <div class="left">
+        <div class="bredcrumb">
+          <!-- <a href="#">Home</a> > <span>Finger Size Calculator</span> -->
+          <a routerLink="/">Home</a> >
+          <a routerLink="/info">Information Centre</a> >
+          <a routerLink="['finger-size-calculator']">Finger Size Calculator</a>
+        </div>
+        <h2 class="category-name">Finger Size Calculator</h2>
+      </div>
+      <div class="right h-100">
+        <figure>
+          <img class="category-img mx-5" src="../../../../assets/images/dashboad-icon.png" alt="" />
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <p>Calculate the 'cut-to-size' bullion dimensions based on a specific finger size.</p>
+  <p> Please note that all given weights, sizes and calculations are for guidance only.</p>
+  <div class="account-forms edit-account-forms pb-5 pt-2">
+    <div class="form-fields-cotainer">
+      <div class="form-fields">
+        <div class="row">
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label for="alloy">Select Alloy:</label>
+              <select class="form-select" id="alloy" [(ngModel)]="alloy" (ngModelChange)="calculate()">
+                <option value="platinum">Platinum</option>
+                <option value="22ct-yellow-gold">22ct Yellow</option>
+                <option value="18ct-white-gold">18ct White Gold</option>
+                <option value="18ct-yellow-gold">18ct Yellow Gold</option>
+                <option value="18ct-red-gold">18ct Red Gold</option>
+                <option value="14ct-yellow-gold">14ct Yellow Gold</option>
+                <option value="9ct-white-gold">9ct White Gold</option>
+                <option value="9ct-yellow-gold">9ct Yellow Gold</option>
+                <option value="9ct-red-gold">9ct Red Gold</option>
+                <option value="palladium">Palladium</option>
+                <option value="silver">Silver</option>
+                <option value="platinum-18ct-yellow">Platinum / 18ct Yellow</option>
+                <option value="platinum-18ct-red">Platinum / 18ct Red</option>
+                <option value="platinum-18ct-red-yellow">Platinum / 18ct Red / Yellow</option>
+                <option value="18ct-yellow-white">18ct Yellow/ White</option>
+                <option value="18ct-white-red">18ct White / Red</option>
+                <option value="18ct-white-red-yellow">18ct White / Red / Yellow</option>
+                <option value="18ct-yellow-platinum">18ct Yellow / Platinum</option>
+                <option value="18ct-yellow-red-gold">18ct Yellow / Red</option>
+                <option value="18ct-red-platinum">18ct Red / Platinum</option>
+                <option value="18ct-red-white">18ct Red / White</option>
+                <option value="18ct-red-yellow">18ct Red / Yellow</option>
+                <option value="9ct-white-yellow">9ct White / Yellow</option>
+                <option value="9ct-white-red">9ct White / Red</option>
+                <option value="9ct-white-red-yellow">9ct White / Red / Yellow</option>
+                <option value="9ct-yellow-red">9ct Yellow / Red</option>
+                <option value="9ct-yellow-palladium">9ct Yellow / Palladium</option>
+                <option value="palladium-18ct-yellow">Palladium / 18ct Yellow</option>
+                <option value="palladium-18ct-red">Palladium / 18ct Red</option>
+                <option value="palladium-18ct-red-yellow">Palladium / 18ct Red / Yellow</option>
+                <option value="palladium-9ct-yellow">Palladium / 9ct Yellow</option>
+                <option value="palladium-9ct-red">Palladium / 9ct Red</option>
+                <option value="palladium-9ct-red-yellow">Palladium / 9ct Red / Yellow</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label for="fingerSize">Finger Size:</label>
+              <select class="form-select" id="fingerSize" [(ngModel)]="fingerSize" (ngModelChange)="calculate()">
+                <option *ngFor="let size of fingerSizes" [value]="size.label">{{ size.label }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label for="gauge">Gauge (mm):</label>
+              <input class="form-control" type="number" id="gauge" [(ngModel)]="gauge" (input)="calculate()"
+                [value]="gauge || 0" />
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label for="width">Width (mm):</label>
+              <input class="form-control" type="number" id="width" [(ngModel)]="width" (input)="calculate()"
+                [value]="width || 0" />
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label class="d-block">Length:</label>
+              <h2>{{ calculatedLength | number:'1.2-2' }} mm</h2>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label class="d-block">Weight:</label>
+              <h2>{{ calculatedWeight | number:'1.2-2'}} g</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

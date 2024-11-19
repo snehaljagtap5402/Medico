@@ -1,0 +1,128 @@
+<div class="product-category mb-4">
+  <div class="category-banner mb-4">
+    <div class="container h-100">
+      <div class="d-flex justify-content-between align-items-center h-100">
+        <div class="left">
+          <div class="bredcrumb">
+            <a href="#">Home</a> >
+            <!-- Check if selectedCategoryByCode is available -->
+            <ng-container *ngIf="selectedCategoryByCode">
+              <a href="#" (click)="$event.preventDefault()">{{ selectedCategoryByCode?.categoryName }}</a> >
+              <!-- Check if selectedSubcategory is available -->
+              <ng-container *ngIf="selectedSubcategory">
+                <a [routerLink]="['/products', selectedCategoryByCode?.categoryCode, selectedSubcategory?.subcategoryCode]"> {{ selectedSubcategory?.subcategoryName }}</a>
+              </ng-container>
+            </ng-container>
+          </div>
+          <h2 class="category-name">{{ selectedCategoryByCode?.categoryName }}</h2>
+        </div>
+        <div class="right h-100" *ngIf="product">
+          <figure class="image-container">
+            <img [src]="product.imagePath" alt="" />
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="product" class="product-detail product-details-tables">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="product-slider">
+            <div id="carouselExampleCaptions" class="carousel slide carousel-fadex" data-bs-ride="carousel">
+              <div class="d-flex ">
+                <div class="tumbnail-container carousel-indicators ">
+                  <div class="tumbnail active" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                    aria-current="true" aria-label="Slide 1"><img [src]="product.imagePath"
+                      alt="{{ product.title }}" />
+                  </div>
+                  <div class="tumbnail" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"><img [src]="product.imagePath" alt="{{ product.title }}" /></div>
+                  <div class="tumbnail" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"><img [src]="product.imagePath" alt="{{ product.title }}" /></div>
+                </div>
+                <div class="product-image">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img [src]="product.imagePath" alt="{{ product.title }}" />
+                    </div>
+                    <div class="carousel-item">
+                      <img [src]="product.imagePath" alt="{{ product.title }}" />
+                    </div>
+                    <div class="carousel-item">
+                      <img [src]="product.imagePath" alt="{{ product.title }}" />
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <i class="fa-solid fa-angle-left"></i>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <i class="fa-solid fa-angle-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="product-info">
+            <h2 class="product-title">{{ product.productDescription }}</h2>
+            <div class="product-detail-cart">
+              <div class="product-head">Click an item's refcode to view further details on the specific item.</div>
+              <div class="list-tbl">
+                <div class="form-group my-4 filter-items">
+                  <label class="mb-2">Filter Similar Items by Alloy</label>
+                  <select class="form-select" [(ngModel)]="selectedMetalType" (change)="filterTable(selectedMetalType)">
+                    <option value="all">Show All Alloys</option>
+                    <option *ngFor="let metalType of metalTypes1" [value]="metalType.alloyId">
+                      {{ metalType.stockDescription }}
+                    </option>
+                  </select>
+                </div>
+                <hr>
+                <div class="table-outer">
+                  <div class="table-responsive">
+                    <table class="align-middle table-style" *ngIf="groupedProducts.length > 0" width="100%">
+                      <thead>
+                        <tr>
+                          <th>Refcode</th>
+                          <th>Description</th>
+                          <th>Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngIf="selectedMetalType === 'all'; else specificMetalType">
+                          <tr *ngFor="let item of groupedProducts">
+                            <td>
+                              <!-- <a [routerLink]="['/product-detail', item.id, 'refcode', item.productRef]"> -->
+                              <a [routerLink]="['/product-detail', item.id, item.productRef.trim()]">{{ item.productRef }}</a>
+                            </td>
+                            <td>{{ item.productDescription }}</td>
+                            <!-- <td>{{ item.sellPrice | currency }}</td> -->
+                            <td>{{ currencyService.getCurrencySymbol(selectedCurrency)}}{{ item.sellPrice |number:'1.2-2'}} </td>
+                          </tr>
+                        </ng-container>
+                        <ng-template #specificMetalType>
+                          <tr *ngFor="let item of groupedProducts">
+                            <td>
+                              <!-- <a [routerLink]="['/product-detail', item.id, 'refcode', item.productRef]"> -->
+                              <a [routerLink]="['/product-detail', item.id, item.productRef.trim()]"> {{ item.productRef }} </a>
+                            </td>
+                            <td>{{ item.productDescription }}</td>
+                            <!-- <td>{{ item.sellPrice | currency }}</td> -->
+                            <td>{{ currencyService.getCurrencySymbol(selectedCurrency)}}{{ item.sellPrice | number:'1.2-2'}} </td>
+                          </tr>
+                        </ng-template>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,351 @@
+.cart-box {
+  @include box-shadow(0px 6px 25px rgba(0, 0, 0, 0.15));
+  padding: 1.5rem;
+  border-radius: 0.625rem;
+  margin: 1.75rem 0;
+}
+
+.account-forms {
+  .form-section-title {
+    color: rgba($color: $black-color, $alpha: 0.7);
+    font-size: $font-size-large;
+    font-weight: $font-semibold;
+    line-height: normal;
+
+    .section-title-icon {
+      color: $pearly-purple-color;
+      font-size: $font-size-xl-large;
+    }
+  }
+
+  .form-group-container {
+    margin: 0 0 1rem;
+
+    .form-icon {
+      font-size: $font-size-xl-large;
+      color: rgba($color: $gray-color, $alpha: 0.7);
+    }
+
+    .form-field {
+      color: $black-color;
+      font-size: $font-size-l-medium;
+      font-weight: $font-regular;
+
+      label {
+        color: rgba($color: $black-color, $alpha: 0.5);
+        font-size: $font-size-regular;
+        font-weight: $font-semibold;
+        margin: 0 0 0.25rem;
+      }
+    }
+  }
+
+  p {
+    color: rgba($black-color, $alpha: 0.6);
+    font-size: $font-size-xl-regular;
+    font-weight: $font-regular;
+  }
+
+  .form-subtitle {
+    color: $black-color;
+    font-size: $font-size-medium;
+    font-weight: $font-regular;
+  }
+
+  .input-note {
+    color: $maximum-purple-color;
+    font-size: $font-size-regular;
+    font-weight: $font-medium;
+  }
+}
+
+.address-book {
+  .table {
+    @include border-radius(0.5rem 0.5rem 0 0);
+    overflow: hidden;
+
+    th,
+    td {
+      padding: 0.75rem 1rem;
+      font-size: $font-size-regular;
+      color: $black-color;
+      a {
+        color: $maximum-purple-color;
+      }
+    }
+
+    th {
+      background: $cultured-color;
+      font-size: $font-size-xl-regular;
+    }
+  }
+}
+
+.input-group-container {
+  .input-group {
+    @include box-shadow(0px 3px 5px rgba(0, 0, 0, 0.1));
+    border: solid 0.0625rem $platinum-color;
+    @include border-radius(0.375rem);
+
+    .form-control {
+      border: none;
+
+      &:focus {
+        border: none !important;
+        box-shadow: none !important;
+      }
+    }
+
+    .input-group-text {
+      background: $platinum-color;
+      border: none;
+    }
+  }
+}
+
+.alert-box {
+  color: $golden-brown-color;
+  font-size: $font-size-xl-regular;
+  font-weight: $font-medium;
+  line-height: 1.25rem;
+  /* 133.333% */
+  padding: 1.25rem;
+}
+
+.alert-box-warning {
+  background: $cosmic-latte;
+}
+
+.cart-tbl {
+  .table {
+    @include border-radius(0.5rem 0.5rem 0 0);
+    overflow: hidden;
+
+    th,
+    td {
+      padding: 0.75rem 1rem;
+      font-size: $font-size-regular;
+      color: $black-color;
+      border-bottom: solid 0.0625rem $chinese-silver-color !important;
+      vertical-align: middle;
+    }
+
+    th {
+      background: $cultured-color;
+      font-size: $font-size-xl-regular;
+    }
+
+    .poduct-img {
+      border: solid 0.0625rem $platinum-color;
+      border-radius: 0.3125rem;
+      margin: 0 1rem 0 0;
+      overflow: hidden;
+    }
+
+    .product-name {
+      color: $black-color;
+      font-size: $font-size-regular;
+      font-weight: $font-regular;
+
+      .product-code {
+        color: rgba($color: $black-color, $alpha: 0.7);
+        font-size: $font-regular;
+        font-weight: $font-regular;
+        text-decoration-line: underline;
+      }
+    }
+
+    a {
+      color: $maximum-purple-color;
+      font-size: $font-size-regular;
+      font-weight: $font-semibold;
+      text-decoration-line: underline;
+    }
+
+    .procust-price {
+      color: $black-color;
+      font-size: $font-size-medium;
+      font-weight: $font-semibold;
+    }
+  }
+
+  .product-quantity {
+    .quantity {
+      height: 2.5rem;
+
+      button {
+        height: 2.5rem;
+        width: 2.5rem;
+        border: none;
+        background: $cultured-color;
+        border-radius: 0.3125rem;
+        padding: 0;
+      }
+    }
+  }
+}
+
+.mat-mdc-icon-button .mat-mdc-button-persistent-ripple {
+  display: none;
+}
+
+.product-summary {
+  overflow: hidden;
+
+  .summary-hed {
+    padding: 1rem 1.5rem;
+    background: $pastel-orange-color;
+    color: $black-color;
+    font-size: $font-size-large;
+    font-weight: $font-semibold;
+     i {
+      color: $maximum-purple-color;
+     }
+  }
+}
+
+.product-summary-detail {
+  padding: 0 1.5625rem;
+  color: rgba($color: $black-color, $alpha: 0.7);
+  font-size: $font-size-medium;
+  font-weight: $font-regular;
+
+  .row {
+    .amount-column {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .item-total {
+    padding: 0 1rem;
+  }
+
+  .grand-todtal {
+    margin: 1.25rem 0;
+    padding: 0 1rem;
+  }
+
+  .total-detail {
+    background: $cultured-color;
+    padding: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  .dark {
+    color: $black-color;
+    text-align: right;
+    font-size: 1.125rem;
+    font-weight: $font-semibold;
+  }
+}
+
+.btn-block {
+  button {
+    flex-basis: calc(100% - 0.5rem);
+  }
+}
+
+.shipping-address {
+  background: $cultured-color;
+  border-top: solid 0.0625rem $dark-chinese-silver-color;
+  padding: 1.625rem 1.25rem;
+  @include border-radius(0 0 0.625rem 0.625rem);
+
+  label {
+    color: $black-color;
+    font-size: $font-size-medium;
+    font-weight: $font-regular;
+    margin: 0 0 0.5rem;
+  }
+
+  .mat-mdc-text-field-wrapper {
+    background-color: $white-color !important;
+    @include border-radius(0.3125rem);
+    border: solid 0.0625rem $platinum-color;
+    @include box-shadow(0px 3px 5px rgba(0, 0, 0, 0.1));
+    color: $davys-grey-color;
+
+    .mat-mdc-select {
+      font-size: $font-size-xl-regular;
+      font-weight: $font-regular;
+    }
+  }
+
+  .mat-mdc-form-field.mat-focused .mat-mdc-form-field-focus-overlay,
+  .mdc-line-ripple {
+    display: none;
+  }
+
+  .mat-mdc-form-field:hover .mat-mdc-form-field-focus-overlay {
+    opacity: 0 !important;
+  }
+
+  .mat-mdc-select-arrow {
+    svg {
+      fill: transparent;
+      background: transparent;
+    }
+
+    &:before {
+      position: absolute;
+      content: "\f107";
+      top: -0.4375rem;
+      left: -0.1875rem;
+      font-size: $font-size-xl-medium;
+      font-family: "Font Awesome 6 Free";
+      font-weight: $font-extra-bold;
+    }
+  }
+
+  .mat-mdc-form-field-infix {
+    min-height: 2.375rem;
+    padding-top: 0.375rem !important;
+    padding-bottom: 0.375rem !important;
+  }
+}
+
+.shipping-heading {
+  h2 {
+    color: rgba($color: $black-color, $alpha: 0.7);
+    font-size: $font-size-large;
+    font-weight: $font-semibold;
+
+    i {
+      color: $pearly-purple-color;
+    }
+  }
+}
+
+.edit-account-forms {
+  .form-fields-cotainer {
+    margin: 0 0 2.25rem;
+
+    .form-fields {
+      background: $cultured-color;
+      border-top: solid 0.0625rem $dark-chinese-silver-color;
+      padding: 2rem 1.5rem 0.5rem;
+      @include border-radius(0 0 0.625rem 0.625rem);
+
+      label {
+        color: $black-color;
+        font-size: $font-size-medium;
+        font-weight: $font-regular;
+        margin: 0 0 0.5rem;
+      }
+
+      .form-control, .form-select {
+        border: solid 0.0625rem $platinum-color;
+        @include box-shadow(0px 3px 5px rgba(0, 0, 0, 0.1));
+        height: 2.375rem;
+        color: $spanish-gray-color;
+        font-size: $font-size-xl-regular;
+        font-weight: $font-regular;
+
+        &:focus {
+          color: $black-color;
+        }
+      }
+    }
+  }
+}

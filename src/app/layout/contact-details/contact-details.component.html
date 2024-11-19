@@ -1,0 +1,221 @@
+<div class="category-banner mb-4">
+  <div class="container h-100">
+    <div class="d-flex justify-content-between align-items-center h-100">
+      <div class="left">
+        <div class="bredcrumb">
+          <a href="#">Home</a> > <span>Contact Details</span>
+        </div>
+        <h2 class="category-name">Contact Details</h2>
+      </div>
+      <div class="right h-100">
+        <figure>
+          <img class="category-img mx-5" src="../../../../assets/images/contact/contact-icon.svg" alt="" />
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="contact-top-content text-center p-4 my-5">
+    <p>Our customer service team are available to answer any enquiry you have regarding our product range between Monday
+      to Friday 8:30am until 4:30pm.</p>
+    <h4>Please do not use this contact form to place orders. If you wish to place orders online via our
+      website, then
+      please</h4>
+    <button class="register-btn" (click)="register()">Register Here</button>
+  </div>
+  <div class="google-map-container">
+    <div class="section-title">
+      <h2 class="">Come Visit Us</h2>
+    </div>
+
+    <div class="map-outer">
+      <!-- Embedded Google Map -->
+      <iframe width="100%" height="392" frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387756.50974949395!2d-74.25908989314624!3d40.697670451814966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDAwJz11.678418!5e0!3m2!1sen!2sus!4v1634047311317!5m2!1sen!2sus"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="address-container">
+
+    <div class="row">
+      <div class="col-md-6 pe-0 pe-md-5">
+        <div class="section-title">
+          <h2>Head Office Address</h2>
+        </div>
+        <div class="address-box">
+          <div class="d-flex">
+            <div class="icon"><i class="fa-solid fa-location-dot"></i></div> <!-- Icon for location -->
+            <div class="address-info">
+
+              <h4>Euro Mounts & Findings</h4>
+              <p>
+                Antwerp House, 26-27 Kirby Street
+                London
+                EC1N 8TE
+                United Kingdom
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="address-box">
+          <div class="d-flex">
+            <div class="icon"><i class="fa-solid fa-envelope"></i></div> <!-- Icon for email -->
+            <div class="address-info">
+              <h4>Email</h4>
+              <p>
+                <a href="mailto:info@eurofindings.com">
+                  info@eurofindings.com
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="address-box">
+          <div class="d-flex">
+            <div class="icon"><i class="fa-solid fa-phone"></i></div> <!-- Icon for phone -->
+            <div class="address-info">
+              <h4>Phone</h4>
+              <p>
+                United Kingdom- <a href="tel:02074045762">020 7404 5762</a><br>
+                International- <a href="tel:4402074045762">+44 (0)20 7404 5762</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 d-md-none p-0 py-3">
+        <div class="divider"></div>
+      </div>
+      <div class="col-md-6 ps-0 ps-md-5 mt-4 mt-md-0">
+        <div class="section-title">
+          <h2>Birmingham Office Address</h2>
+        </div>
+        <div class="address-box">
+          <div class="d-flex">
+            <div class="icon"><i class="fa-solid fa-location-dot"></i></div> <!-- Icon for location -->
+            <div class="address-info">
+              <h4>Euro Mounts & Findings</h4>
+              <p> 3 Hockley Street, Hockley, Birmingham, B18 6BL United Kingdom</p>
+            </div>
+          </div>
+        </div>
+        <div class="address-box">
+          <div class="d-flex">
+            <div class="icon"><i class="fa-solid fa-envelope"></i></div> <!-- Icon for email -->
+            <div class="address-info">
+              <h4>Email</h4>
+              <p><a href="mailto:info@eurofindings.com"> info@eurofindings.com</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="address-box">
+          <div class="d-flex">
+            <div class="icon"><i class="fa-solid fa-phone"></i></div> <!-- Icon for phone -->
+            <div class="address-info">
+              <h4>Phone</h4>
+              <p>
+                United Kingdom- <a href="tel:01215540111">0121 554 0111</a><br>
+                International- <a href="tel:4401215540111">+44 (0)121 554 0111</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="contact-form-container">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8">
+        <div class="contact-form">
+          <div class="section-title">
+            <h2>Send us a Message</h2>
+          </div>
+          <form [formGroup]="form" (ngSubmit)="submitForm()">
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <div class="form-group-container">
+                  <div class="form-field">
+                    <label for="name">Name<span class="required-text">*</span></label>
+                    <input type="text" class="form-control" id="name" formControlName="name">
+                    <small class="text-danger error" *ngIf="isInvalid('name', 'required')">
+                      First name is required
+                    </small>
+                    <small class="text-danger error" *ngIf="isInvalid('name', 'pattern')">
+                      Only alphabets are allowed
+                    </small>
+                    <small class="text-danger error" *ngIf="isInvalid('name', 'minlength')">
+                      Minimum length is 1 character
+                    </small>
+                    <small class="text-danger error" *ngIf="isInvalid('name', 'maxlength')">
+                      Maximum length is 50 characters
+                    </small>
+                    <small class="text-danger error" *ngIf="isInvalid('name', 'noWhitespace')">
+                      Spaces are not allowed
+                    </small>
+                    <small class="text-danger error" *ngIf="isInvalid('name', 'noNumbers')">
+                      Numbers are not allowed
+                    </small>
+                    <small class="text-danger error" *ngIf="isInvalid('name', 'noSpecialCharacters')">
+                      Special characters (except /) are not allowed
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="form-group-container">
+                  <div class="form-field">
+                    <label for="email">Email<span class="required-text">*</span></label>
+                    <input type="text" class="form-control" id="email" formControlName="email">
+                    <small class="text-danger error" *ngIf="isInvalid('email', 'required')">
+                      Email is required
+                    </small>
+                    <small class="text-danger error" *ngIf="isInvalid('email', 'pattern')">
+                      Please enter a valid email address
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="form-group-container">
+                  <div class="form-field">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" formControlName="phone">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-8 mb-4">
+                <div class="form-group-container">
+                  <div class="form-field">
+                    <label for="message">Message<span class="required-text">*</span></label>
+                    <textarea class="form-control" id="message" formControlName="message"></textarea>
+                    <div class="form-text text-muted text-danger error" *ngIf="isInvalid('message', 'required')">
+                      Message is required
+                    </div>
+                    <div class="form-text text-muted text-danger error" *ngIf="isInvalid('message', 'pattern')">
+                      Invalid message format
+                    </div>
+                    <div *ngIf="isInvalid('message', 'minlength')" class="form-text text-muted text-danger error">
+                      Message must be at least 3 characters long</div>
+                    <div *ngIf="isInvalid('message', 'maxlength')" class="form-text text-muted text-danger error">
+                      Message cannot exceed 500 characters</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 mb-4 re-captcha pt-0 pt-lg-3">
+                <re-captcha (resolved)="resolved($event)"
+                  siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></re-captcha>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btns-primary" type="submit">Send Message<span class="btn-icon"></span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

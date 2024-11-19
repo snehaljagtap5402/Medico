@@ -1,0 +1,43 @@
+.btn-pagination {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    font-size: 12px;
+    transition: background-color 0.3s;
+    padding: 0;
+  
+    &:hover {
+      background-color: #733a77;
+      color: #fff;
+    }
+  }
+  
+  .btn-pagination.active {
+    background-color: #733a77;
+    color: #fff;
+  }
+  
+  /* styles.css or your.component.css */
+  .rounded-select {
+    border-radius: 10px !important;
+    background-color: #733a77 !important;
+    color: #fff !important;
+    margin: 0px 4px 0px 4px;
+  }
+  
+  .pager-dropdown {
+    width: auto;
+    display: inline;
+    margin: 0 5px;
+  }
+  
+  .menu {
+    max-height: 325px;
+    overflow-y: scroll;
+  }

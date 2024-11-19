@@ -1,0 +1,271 @@
+<div class="category-banner mb-4">
+    <div class="container h-100">
+        <div class="d-flex justify-content-between align-items-center h-100">
+            <div class="left">
+                <div class="bredcrumb">
+                    <a href="#">Home</a> > <span>Update Addresses</span>
+                </div>
+                <h2 class="category-name">Update Addresses</h2>
+            </div>
+            <div class="right h-100">
+                <figure>
+                    <img class="category-img mx-5" src="../../../../assets/images/insert-address-icon.png"
+                        alt="" />
+                </figure>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="account-forms edit-account-forms pb-5 pt-2">
+    <div class="container">
+        <div class="col-xs-12">
+            <form [formGroup]="userAddressForm" (ngSubmit)="onSubmit()">
+                <div class="form-fields-cotainer">
+
+                    <h4 class="form-section-title mb-3">
+                        <div class="d-flex align-items-center">
+                            <span class="section-title-icon me-2">
+                                <img src="../../../../assets/images/svg-icons/address-alias-icon.svg" />
+                            </span>
+                            <span>Address Alias</span>
+                        </div>
+                    </h4>
+                    <div class="form-fields">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label>Alias<span class="required-text">*</span></label>
+                                    <input type="text" class="form-control" formControlName="alias">
+                                    <small class="text-danger error" *ngIf="isInvalid('alias', 'required')">
+                                        Alias is required
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('alias', 'pattern')">
+                                        Only alphabets are allowed
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('alias', 'minlength')">
+                                        Minimum length is 5 characters
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('alias', 'maxlength')">
+                                        Maximum length is 50 characters
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('alias', 'noWhitespace')">
+                                        White space is not allowed
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-fields-cotainer">
+                    <h4 class="form-section-title mb-3">
+                        <div class="d-flex align-items-center">
+                            <span class="section-title-icon me-2">
+                                <img src="../../../../assets/images/svg-icons/recipient-details-icon.svg" />
+                            </span>
+                            <span>Recipient Details</span>
+                        </div>
+                    </h4>
+
+                    <div class="form-fields">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label>First Name<span class="required-text">*</span></label>
+                                    <input type="text" class="form-control" formControlName="firstName">
+                                    <!-- <small class="text-danger error" *ngIf="isInvalid('firstName', 'required')">
+                                        First name is required
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('firstName', 'pattern')">
+                                        Only alphabets are allowed
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('firstName', 'minlength')">
+                                        Minimum length is 3 characters
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('firstName', 'maxlength')">
+                                        Maximum length is 20 characters
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('firstName', 'noWhitespace')">
+                                        White space is not allowed
+                                    </small> -->
+                                    <small class="text-danger error" *ngIf="isInvalid('firstName', 'required')">
+                                        First name is required
+                                      </small>
+                                      <small class="text-danger error" *ngIf="isInvalid('firstName', 'pattern')">
+                                        Only alphabets are allowed
+                                      </small>
+                                      <small class="text-danger error" *ngIf="isInvalid('firstName', 'minlength')">
+                                        Minimum length is 1 character
+                                      </small>
+                                      <small class="text-danger error" *ngIf="isInvalid('firstName', 'maxlength')">
+                                        Maximum length is 50 characters
+                                      </small>
+                                      <small class="text-danger error" *ngIf="isInvalid('firstName', 'noWhitespace')">
+                                        Spaces are not allowed
+                                      </small>
+                                      <small class="text-danger error" *ngIf="isInvalid('firstName', 'noNumbers')">
+                                        Numbers are not allowed
+                                      </small>
+                                      <small class="text-danger error" *ngIf="isInvalid('firstName', 'noSpecialCharacters')">
+                                        Special characters (except /) are not allowed
+                                      </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label>Last Name<span class="required-text">*</span></label>
+                                    <input type="text" class="form-control" formControlName="lastName">
+                                    <!-- <small class="text-danger error" *ngIf="isInvalid('lastName', 'required')">
+                                        Last name is required
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('lastName', 'pattern')">
+                                        Only alphabets are allowed
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('lastName', 'minlength')">
+                                        Minimum length is 3 characters
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('lastName', 'maxlength')">
+                                        Maximum length is 20 characters
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('lastName', 'noWhitespace')">
+                                        White space is not allowed
+                                    </small> -->
+                                    <small class="text-danger error" *ngIf="isInvalid('lastName', 'required')">
+                                        Last name is required
+                                      </small>
+                                      <small class="text-danger error" *ngIf="isInvalid('lastName', 'pattern')">
+                                        Only alphabets are allowed
+                                      </small>
+                                      <small class="text-danger error" *ngIf="isInvalid('lastName', 'minlength')">
+                                        Minimum length is 1 character
+                                      </small>
+                                      <small class="text-danger error" *ngIf="isInvalid('lastName', 'maxlength')">
+                                        Maximum length is 50 characters
+                                      </small>
+                                      <small class="text-danger error" *ngIf="isInvalid('lastName', 'noWhitespace')">
+                                        Spaces are not allowed
+                                      </small>
+                                      <small class="text-danger error" *ngIf="isInvalid('lastName', 'noNumbers')">
+                                        Numbers are not allowed
+                                      </small>
+                                      <small class="text-danger error" *ngIf="isInvalid('lastName', 'noSpecialCharacters')">
+                                        Special characters (except /) are not allowed
+                                      </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-fields-cotainer">
+                    <h4 class="form-section-title mb-3">
+                        <div class="d-flex align-items-center">
+                            <span class="section-title-icon me-2">
+                                <img src="../../../../assets/images/svg-icons/address-details-icon.svg" />
+                            </span>
+                            <span>Address Details</span>
+                        </div>
+                    </h4>
+                    <div class="form-fields">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label>Company</label>
+                                    <input type="text" class="form-control" formControlName="company">
+                                    <small class="text-danger error" *ngIf="isInvalid('company', 'required')">
+                                        Company is required
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('company', 'pattern')">
+                                        Spaces at the start or end are not allowed
+                                      </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label>County<span class="required-text">*</span></label>
+                                    <input type="text" class="form-control" formControlName="county">
+                                    <small class="text-danger error" *ngIf="isInvalid('county', 'required')">
+                                        County is required
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('county', 'pattern')">
+                                        Spaces at the start or end are not allowed
+                                      </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label>Address<span class="required-text">*</span></label>
+                                    <input type="text" class="form-control" formControlName="address">
+                                    <small class="text-danger error" *ngIf="isInvalid('address', 'required')">
+                                        Address is required
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('address', 'pattern')">
+                                        Spaces at the start or end are not allowed
+                                      </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label>Post Code<span class="required-text">*</span></label>
+                                    <input type="text" class="form-control" formControlName="postCode">
+                                    <small class="text-danger error" *ngIf="isInvalid('postCode', 'required')">
+                                        Post code is required
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('postCode', 'maxlength')">
+                                        Maximum length is 10 characters
+                                      </small>
+                                      <small class="text-danger error" *ngIf="isInvalid('postCode', 'pattern')">
+                                        Spaces at the start or end are not allowed
+                                      </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label>City<span class="required-text">*</span></label>
+                                    <input type="text" class="form-control" formControlName="city">
+                                    <small class="text-danger error" *ngIf="isInvalid('city', 'required')">
+                                        City is required
+                                    </small>
+                                    <small class="text-danger error" *ngIf="isInvalid('city', 'pattern')">
+                                        Spaces at the start or end are not allowed
+                                      </small>
+                                </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="d-block">
+                                        Country
+                                    </label>
+                                    <!-- <mat-form-field class="w-100">
+                                        <mat-select [(value)]="selected">
+                                            <mat-option value="1">india</mat-option>
+                                            <mat-option value="2">USA</mat-option>
+                                        </mat-select>
+                                    </mat-form-field> -->
+
+                                    <mat-form-field class="w-100">
+                                        <mat-select [formControl]="userAddressForm.get('country')">
+                                          <mat-option *ngFor="let country of countries" [value]="country.description">{{ country.description }}</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                      
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 mb-5 d-flex flex-wrap justify-content-center justify-content-sm-end gap-3">
+                    <button class="btns-primary" [routerLink]="['/user/dashboard']">
+                        <span class="btn-icon rotate-180"></span> Cancel
+                    </button>
+                    <!-- <button class="btns-primary" type="submit" [disabled]="userAddressForm.invalid">
+                        Update Address <span class="btn-icon"></span>
+                    </button> -->
+                    <button type="submit" class="btns-primary"  [disabled]="userAddressForm.invalid">
+                        Update Address <span class="btn-icon"></span>
+                    </button>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

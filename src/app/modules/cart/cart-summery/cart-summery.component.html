@@ -1,0 +1,181 @@
+<div class="container mb-5">
+  <div class="col-md-12">
+    <div class="cart-box m-0 p-0 product-summary">
+      <h3 class="summary-hed"><span class="d-flex align-items-center"><i class="fa-solid fa-clipboard-list me-2"></i>
+          Cart Summary</span></h3>
+      <div class="product-summary-detail">
+        <div class="item-total" *ngIf="!isCartPage">
+          <div class="row ">
+            <div class="col-6 amount-column">
+              <label>Item Total (inc. VAT)</label>
+            </div>
+            <div class="col-6 amount-column">
+              <span class="float-end dark">{{ getCurrencySymbol }}{{ totalExcludingVAT | number:'1.2-2'}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="total-detail" *ngIf="isCartPage">
+          <div class="row">
+            <div class="col-6 amount-column">
+              <label>Total Line Items</label>
+            </div>
+            <div class="col-6 amount-column">
+              <span class="float-end dark">{{ totalOfAllItems }}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 amount-column">
+              <label>Total Item Quantity</label>
+            </div>
+            <div class="col-6 amount-column">
+              <span class="float-end dark">{{ getTotalItemQuantity() }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="total-detail">
+          <div class="row">
+
+            <div class="col-6 amount-column">
+              <label>Shipping Rate</label>
+            </div>
+
+            <div class="col-6 amount-column">
+              <span class="float-end dark">{{ getCurrencySymbol }}{{ ShippingRate}}</span>
+            </div>
+            <div *ngIf="isCartPage" class="mt-1 modes">
+              <p><i> - Delivery Modes</i></p>
+            </div>
+
+            <div class="col-6 amount-column">
+              <label>Sub Total (ex. VAT)</label>
+            </div>
+            <div class="col-6 amount-column">
+              <span class="float-end dark">{{ getCurrencySymbol }}{{ calculateSubTotalExcludingVAT() }}</span>
+            </div>
+            <div class="col-6 amount-column">
+              <label>VAT @ {{vatRate}}%</label>
+            </div>
+            <div class="col-6 amount-column">
+              <span class="float-end dark">{{ getCurrencySymbol }}{{vat}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="grand-todtal">
+          <div class="row">
+            <div class="col-6 amount-column ">
+              <label>Grand Total</label>
+            </div>
+            <div class="col-6 amount-column">
+              <span class="float-end dark">{{ getCurrencySymbol }}{{totalExcludingVAT | number:'1.2-2'}}</span>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <!-- <div class="mt-4 mb-4 d-flex flex-wrap justify-content-center gap-3 btn-block">
+          <button (click)="emptyCart()" class="btns-primary" *ngIf="!checkoutButtonClicked && !hideButtons"
+          [class.disabled]="!cartDetails || cartDetails.length === 0"
+          [disabled]="!cartDetails || cartDetails.length === 0">
+            Empty Cart <span class="btn-icon"></span>
+          </button>
+          <button (click)="navigateToCart()" class="btns-primary" *ngIf="!checkoutButtonClicked && !hideButtons"
+            [class.disabled]="!cartDetails || cartDetails.length === 0"
+            [disabled]="!cartDetails || cartDetails.length === 0">
+            Checkout <span class="btn-icon"></span>
+          </button>
+        </div> -->
+        <div class="mt-4 mb-4 d-flex flex-wrap justify-content-center gap-3 btn-block">
+          <button (click)="emptyCart()" class="btns-primary"  *ngIf="!checkoutButtonClicked && !hideButtons"
+          [class.disabled]="!cartDetails || cartDetails.length === 0"
+          [disabled]="!cartDetails || cartDetails.length === 0">
+            Empty Cart <span class="btn-icon"></span>
+          </button>
+          <button (click)="navigateToCart()" class="btns-primary"  *ngIf="!checkoutButtonClicked && !hideButtons"
+          [class.disabled]="!cartDetails || cartDetails.length === 0"
+          [disabled]="!cartDetails || cartDetails.length === 0">
+            Checkout <span class="btn-icon"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showBillingInfo >= 1" class="col-md-12 my-4">
+    <div class="cart-box m-0 p-0 product-summary">
+
+      <div class="product-summary-detail py-4">
+        <h4 class="title">Billing Address Summary</h4>
+        <div *ngIf="billingDetails" class="ul-list">
+          <ul>
+            <li>{{ billingDetails.firstName }}</li>
+            <li>{{ billingDetails.lastName }}</li>
+            <li>{{ billingDetails.company }}</li>
+            <li>{{ billingDetails.country }}</li>
+            <li>{{ billingDetails.address }}</li>
+            <li>{{ billingDetails.postCode }}</li>
+            <li>{{ billingDetails.city }}</li>
+            <li>{{ billingDetails.secondcountry }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showBillingInfo >=2" class="col-md-12 my-4">
+    <div class="cart-box m-0 p-0 product-summary">
+      <div class="product-summary-detail py-4">
+        <h4 class="title">Shipping Address Summary</h4>
+        <div *ngIf="shippingDetails" class="ul-list">
+          <ul>
+            <li>{{ shippingDetails.firstName }}</li>
+            <li>{{ shippingDetails.lastName }}</li>
+            <li>{{ shippingDetails.company }}</li>
+            <li>{{ shippingDetails.country }}</li>
+            <li>{{ shippingDetails.address }}</li>
+            <li>{{ shippingDetails.postCode }}</li>
+            <li>{{ shippingDetails.city }}</li>
+            <li>{{ shippingDetails.secondcountry }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showBillingInfo >=3" class="col-md-12 my-4">
+    <div class="cart-box m-0 p-0 product-summary">
+      <div class="product-summary-detail py-4">
+        <h4 class="title">Shipping Method</h4>
+        <div *ngIf="shippingMethodDetails" class="ul-list">
+          <ul>
+            <li>{{ shippingMethodDetails.shippingMethod }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showBillingInfo >= 4" class="col-md-12 my-4">
+    <div class="cart-box m-0 p-0 product-summary">
+      <div class="product-summary-detail py-4">
+        <h4 class="title">Contact Method</h4>
+        <div *ngIf="selectedContact" class="ul-list">
+          <ul>
+            <li> {{selectedContact.email}}</li>
+            <li> {{selectedContact.phone}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showBillingInfo >= 4" class="col-md-12 my-4">
+    <div class="cart-box m-0 p-0 product-summary">
+      <div class="product-summary-detail py-4">
+        <h4 class="title">Payment Method</h4>
+        <div *ngIf="selectedPaymentMethod" class="ul-list">
+          <ul>
+            <li> {{ getPaymentMethodName(selectedPaymentMethod) }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="cart-box address-book">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="form-section-title mb-0 d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+          <span class="section-title-icon me-2">
+            <img src="../../../../assets/images/svg-icons/address-book-icon.svg" />
+          </span>
+          <span>User List</span>
+        </div>
+        <button class="btns-primary" [routerLink]="['/admin/dashboard']">
+          <span class="btn-icon rotate-180"></span> Cancel
+        </button>
+        <button class="btn btn-success ms-2" [routerLink]="['/admin/add-user']">
+          <i class="fas fa-plus"></i> Add User
+        </button>
+      </h4>
+      <hr>
+      <div class="table-responsive">
+        <table class="table table-header-drk">
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngIf="paginatedUsers">
+              <tr *ngFor="let user of paginatedUsers; let i = index">
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                  <button class="btn btn-primary" [routerLink]="['/admin/update-user-detail', user.userId]">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="btn btn-danger" (click)="deleteUser(user)">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Pagination -->
+  <div class="pagination-container pb-0 pb-0">
+    <div class="divider mt-2"></div>
+    <div class="d-flex flex-wrap justify-content-between align-items-center pagination-inner">
+      <div class="page-length">
+        <span class="font-bold">Show:</span> {{ users?.length }} items | Page {{ currentPage }} of {{
+        getTotalPages() }}
+      </div>
+      <div class="pagination">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-pagination" (click)="goToFirstPage()"><i class="fas fa-angle-double-left"></i></button>
+          <button class="btn btn-pagination" (click)="goToPreviousPage()"><i class="fas fa-angle-left"></i></button>
+          <ng-container *ngFor="let page of getPaginationRange()">
+            <button class="btn btn-pagination" [class.active]="page === currentPage" (click)="onPageChange(page)">
+              {{ page }}
+            </button>
+          </ng-container>
+          <button class="btn btn-pagination" (click)="goToNextPage()"><i class="fas fa-angle-right"></i></button>
+          <button class="btn btn-pagination" (click)="goToLastPage()"><i class="fas fa-angle-double-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

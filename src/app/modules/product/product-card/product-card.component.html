@@ -1,0 +1,40 @@
+<mat-card class="product-card">
+  <div class="product-img">
+    <img mat-card-image
+      [src]="product.image && product.image.trim() ? imagePathPrefix + product.image : '/assets/images/product-images/no-img.jpg'"
+      alt="{{ product.productDescription }}"
+      (click)="onProductClick(product.stockId, product.alloyId, product.groupCode, product.subcategoryCode)" />
+    
+    <div class="icons">
+      <button mat-button color="warn" (click)="toggleWishlist()">
+        <mat-icon>{{ product.isWishlist ? 'favorite' : 'favorite_border' }}</mat-icon>
+      </button>
+      <button class="overlay-icon-btn"
+        (click)="onProductClick(product.alloyId, product.groupCode, product.subcategoryCode)">
+        <i class="fa-regular fa-eye"></i>
+      </button>
+      <button class="overlay-icon-btn" (click)="addToCartOrNavigate()">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </button>
+    </div>
+    
+    <div class="shop-now"
+      (click)="onProductClick(product.stockId, product.alloyId, product.groupCode, product.subcategoryCode)">
+      Shop Now
+    </div>
+  </div>
+  
+  <mat-card-content class="p-0"
+    (click)="onProductClick(product.stockId, product.alloyId, product.groupCode, product.subcategoryCode)">
+    <h3 class="product-title">{{ product.productRef }}</h3>
+    <p>{{ product.productDescription }}</p>
+    <div class="d-flex justify-content-between">
+      <div class="price">
+        <span *ngIf="isAuthenticated; else loginToView">{{ convertedPrice | number:'1.2-2' }} {{ selectedCurrency }}</span>
+        <ng-template #loginToView>
+          <button mat-button color="primary" (click)="openLoginDialog(); $event.stopPropagation()">Login to view price</button>
+        </ng-template>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

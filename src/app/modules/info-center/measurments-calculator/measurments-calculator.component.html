@@ -1,0 +1,189 @@
+<div class="category-banner mb-4">
+  <div class="container h-100">
+    <div class="d-flex justify-content-between align-items-center h-100">
+      <div class="left">
+        <div class="bredcrumb">
+          <a href="#">Home</a> > <a (click)="openInfoPopup()">Information Center</a> > <span>Measurement and Weight
+            Calculator</span>
+        </div>
+        <h2 class="category-name">Measurement and Weight Calculator</h2>
+      </div>
+      <div class="right h-100">
+        <figure>
+          <img class="category-img mx-5" src="../../../../assets/images/dashboad-icon.png" alt="" />
+        </figure>
+      </div>
+      <span class="close-icon" (click)="closePopup()">&#10006;</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="account-forms edit-account-forms pb-5 pt-2">
+    <p class="text-dark">Please note that all given weights, sizes and calculations are for guidance only.</p>
+    <div class="form-fields-cotainer">
+      <div class="form-fields">
+        <div class="row">
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label>Length :</label>
+              <div class="d-flex">
+                <input class="form-control w-75" type="number" [(ngModel)]="lengthValue"
+                  (input)="onLengthValueChange()" />
+                <select class="form-select w-25" [(ngModel)]="fromUnit" (change)="onUnitChange()">
+                  <option value="mm">mm</option>
+                  <option value="cm">cm</option>
+                  <option value="meters">meters</option>
+                  <option value="inches">inches</option>
+                  <option value="yards">yards</option>
+                  <option value="feet">feet</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label>Convert to:</label>
+              <select class="form-select" [(ngModel)]="toUnit" (change)="onUnitChange()">
+                <option value="mm">mm</option>
+                <option value="cm">cm</option>
+                <option value="meters">meters</option>
+                <option value="inches">inches</option>
+                <option value="yards">yards</option>
+                <option value="feet">feet</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label class="d-block">Conversion:</label>
+              <h2>{{ result }} {{ toUnit }}</h2>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-fields-cotainer">
+      <h4 class="form-section-title mb-3">
+        <div class="d-flex align-items-center">
+          <span class="section-title-icon me-2">
+            <i class="fa-solid fa-weight-scale"></i>
+          </span>
+          <span>Convert Weight Measurement</span>
+        </div>
+      </h4>
+      <p class="text-dark">Convert a specific weight measurement to another - e.g. convert grams to ounces.</p>
+
+      <div class="form-fields">
+        <div class="row">
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label>Weight:</label>
+              <div class="d-flex">
+                <input class="form-control w-75" type="number" [(ngModel)]="weightValue"
+                  (input)="onWeightValueChange()" />
+                <select class="form-select w-25" [(ngModel)]="fromWeightUnit" (change)="onWeightUnitChange()">
+                  <option value="Grams">Grams</option>
+                  <option value="Kilograms">Kilograms</option>
+                  <option value="Ounces, troy">Ounces, troy</option>
+                  <option value="Pounds, troy">Pounds, troy</option>
+                  <option value="Ounces, Avoir">Ounces, Avoir</option>
+                  <option value="Pounds, Avoir">Pounds, Avoir</option>
+                  <option value="Carats">Carats</option>
+                  <option value="Grains">Grains</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label>Convert to:</label>
+              <select class="form-select" [(ngModel)]="toWeightUnit" (change)="onWeightUnitChange()">
+                <!-- <option value="g">Grams</option>
+                <option value="kg">Kilograms</option>
+                <option value="oz t">Ounces, troy</option>
+                <option value="lb t">Pounds, troy</option>
+                <option value="oz av">Ounces, Avoir</option>
+                <option value="lb av">Pounds, Avoir</option>
+                <option value="carat">Carats</option>
+                <option value="grain">Grains</option> -->
+                <option value="Grams">Grams</option>
+                <option value="Kilograms">Kilograms</option>
+                <option value="Ounces, troy">Ounces, troy</option>
+                <option value="Pounds, troy">Pounds, troy</option>
+                <option value="Ounces, Avoir">Ounces, Avoir</option>
+                <option value="Pounds, Avoir">Pounds, Avoir</option>
+                <option value="Carats">Carats</option>
+                <option value="Grains">Grains</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label class="d-block">Conversion:</label>
+              <h2>{{ conversion }} {{ toWeightUnit }}</h2>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-fields-cotainer">
+      <h4 class="form-section-title mb-3">
+        <div class="d-flex align-items-center">
+          <span class="section-title-icon me-2">
+            <i class="fa-solid fa-weight-scale"></i>
+          </span>
+          <span>Convert Alloy Weight to Another Alloy</span>
+        </div>
+      </h4>
+      <p class="text-dark">Convert the specific weight of an alloy to another alloy - e.g. convert 10g platinum to 18ct
+        white gold.</p>
+
+      <div class="form-fields">
+        <div class="row">
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label>Metal Alloy (g):</label>
+              <div class="d-flex">
+                <!-- <input class="form-control w-75" type="number" [(ngModel)]="weightAlloyValue" (input)="onAlloyWeightValueChange()" />
+                <select  class="form-select w-25" [(ngModel)]="fromAlloy" (change)="onAlloyChange()">
+                  <option value="alloyA">Alloy A</option>
+                  <option value="alloyB">Alloy B</option>
+                </select> -->
+                <input class="form-control w-75" type="number" [(ngModel)]="weightAlloyValue"
+                  (input)="onAlloyWeightValueChange()" />
+                <select class="form-select w-25" [(ngModel)]="fromAlloy" (change)="onAlloyChange()">
+                  <option *ngFor="let metal of metalTypes" [ngValue]="metal">{{ metal }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label>Convert to:</label>
+              <!-- <select class="form-select"  [(ngModel)]="toAlloy" (change)="onAlloyChange()">
+                  <option value="alloyB">Alloy A</option>
+                  <option value="alloyB">Alloy B</option>
+                </select> -->
+              <select class="form-select" [(ngModel)]="toAlloy" (change)="onAlloyChange()">
+                <option *ngFor="let metal of metalTypes" [ngValue]="metal">{{ metal }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-4">
+            <div class="form-group mb-4">
+              <label class="d-block">Conversion:</label>
+              <!-- <h2>{{ Convert }} {{ toAlloy.density }}</h2> -->
+              <h2>{{ Convert | number:'1.2-2' }} grams</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

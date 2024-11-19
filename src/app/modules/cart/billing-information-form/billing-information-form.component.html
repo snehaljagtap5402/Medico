@@ -1,0 +1,612 @@
+<kendo-stepper [steps]="steps" stepType="full" [(currentStep)]="current">
+  <ng-template kendoStepperIndicatorTemplate let-step>
+    <span class="{{step.icon}}"></span>
+  </ng-template>
+</kendo-stepper>
+<form *ngIf="current==0" [formGroup]="billingInformationForm" (ngSubmit)="submit('billingInfo')">
+  <div class="account-forms edit-account-forms mt-4">
+    <div class="form-fields-cotainer">
+      <h4 class="form-section-title mb-3">
+        #1 Billing Information
+      </h4>
+      <div class="form-fields ">
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label class="d-block form-label d-none">Select an option</label>
+              <mat-form-field class="w-100">
+                <mat-select formControlName="selectedAddress" (selectionChange)="onBillingSelectionChange($event)">
+                  <mat-option value="copyFromAddressBook" (click)="copyBillingAddressToBillingForm()" >Copy From Your Address Book</mat-option>
+                  <mat-option *ngFor="let address of addresses" [value]="address.idAddress">{{ address.forename
+                    }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-8"></div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="first-name" class="d-block form-label">First Name<span
+                  class="asterisk text-danger ms-1">*</span></label>
+              <input id="first-name" type="text" formControlName="firstName" class="w-100 form-control form-control">
+              <small *ngIf="form['firstName'].touched" class="">
+                <span *ngIf="form['firstName'].errors && form['firstName'].errors['required']">First name is required
+                </span>
+                <div *ngIf="form['firstName'].errors && form['firstName'].errors['minlength']">At least 5 characters are
+                  required
+                </div>
+                <div *ngIf="form['firstName'].errors && form['firstName'].errors['maxlength']">First name can be maximum
+                  of 50 characters
+                </div>
+                <div *ngIf="form['firstName'].errors && form['firstName'].errors['pattern']">Only letters are allowed
+                </div>
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="last-name" class="d-block form-label">Last Name<span
+                  class="asterisk text-danger ms-1">*</span> </label>
+              <input id="last-name" type="text" formControlName="lastName" class="w-100 form-control">
+              <small *ngIf="form['lastName'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="form['lastName'].errors && form['lastName'].errors['required']">Last name is required
+                </span>
+                <div *ngIf="form['lastName'].errors && form['lastName'].errors['minlength']">At least 4 characters are
+                  required
+                </div>
+                <div *ngIf="form['lastName'].errors && form['lastName'].errors['maxlength']">Last name can be maximum of
+                  50 characters
+                </div>
+                <div *ngIf="form['lastName'].errors && form['lastName'].errors['pattern']">Only letters are allowed
+                </div>
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="last-name" class="d-block form-label">Company<span class="asterisk text-danger ms-1">*</span>
+              </label>
+              <input id="last-name" type="text" formControlName="company" class="w-100 form-control">
+              <small *ngIf="form['company'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="form['company'].errors && form['company'].errors['required']">Company is required </span>
+                <div *ngIf="form['company'].errors && form['company'].errors['minlength']">At least 5 characters are
+                  required</div>
+                <div *ngIf="form['company'].errors && form['company'].errors['maxlength']">Company name can be maximum
+                  of 50 characters</div>
+                <div *ngIf="form['company'].errors && form['company'].errors['pattern']">Only letters are allowed</div>
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="first-name" class="d-block form-label">Country<span
+                  class="asterisk text-danger ms-1">*</span></label>
+              <input id="first-name" type="text" formControlName="country" class="w-100 form-control">
+              <small *ngIf="form['country'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="form['country'].errors && form['country'].errors['required']">Country is required </span>
+                <div *ngIf="form['country'].errors && form['country'].errors['minlength']">At least 5 characters are
+                  required
+                </div>
+                <div *ngIf="form['country'].errors && form['country'].errors['maxlength']">Country name can be maximum
+                  of 50 characters
+                </div>
+                <div *ngIf="form['country'].errors && form['country'].errors['pattern']">Only letters are allowed
+                </div>
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="last-name" class="d-block form-label">Address<span class="asterisk text-danger ms-1">*</span>
+              </label>
+              <input id="last-name" type="text" formControlName="address" class="w-100 form-control">
+              <small *ngIf="form['address'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="form['address'].errors && form['address'].errors['required']">Address is required </span>
+                <div *ngIf="form['address'].errors && form['address'].errors['minlength']">At least 5 characters are
+                  required</div>
+                <div *ngIf="form['address'].errors && form['address'].errors['maxlength']">Address can be maximum of 50
+                  characters</div>
+                <div *ngIf="form['address'].errors && form['address'].errors['pattern']">Only letters and digits are
+                  allowed</div>
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="last-name" class="d-block form-label">Post Code<span
+                  class="asterisk text-danger ms-1">*</span>
+              </label>
+              <input id="last-name" type="text" formControlName="postCode" class="w-100 form-control">
+              <small *ngIf="form['postCode'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="form['postCode'].errors && form['postCode'].errors['required']">Post code is required
+                </span>
+                <div *ngIf="form['postCode'].errors && form['postCode'].errors['minlength']">At least 5 characters are
+                  required</div>
+                <div *ngIf="form['postCode'].errors && form['postCode'].errors['maxlength']">Post code can be maximum of
+                  50 characters</div>
+                <div *ngIf="form['postCode'].errors && form['postCode'].errors['pattern']">Only letters and digits are
+                  allowed</div>
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="first-name" class="d-block form-label">City<span
+                  class="asterisk text-danger ms-1">*</span></label>
+              <input id="first-name" type="text" formControlName="city" class="w-100 form-control">
+              <small *ngIf="form['city'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="form['city'].errors && form['city'].errors['required']">City is required </span>
+                <div *ngIf="form['city'].errors && form['city'].errors['minlength']">At least 5 characters are required
+                </div>
+                <div *ngIf="form['city'].errors && form['city'].errors['maxlength']">City can be maximum of 50
+                  characters</div>
+                <div *ngIf="form['city'].errors && form['city'].errors['pattern']">Only letters are allowed</div>
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="first-name" class="d-block form-label">Country<span
+                  class="asterisk text-danger ms-1">*</span></label>
+              <input id="first-name" type="text" formControlName="secondcountry" class="w-100 form-control">
+              <small *ngIf="form['secondcountry'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="form['secondcountry'].errors && form['secondcountry'].errors['required']">Country is
+                  required</span>
+                <div *ngIf="form['secondcountry'].errors && form['secondcountry'].errors['minlength']">At least 5
+                  characters are required</div>
+                <div *ngIf="form['secondcountry'].errors && form['secondcountry'].errors['maxlength']">Country can be
+                  maximum of 50 characters</div>
+                <div *ngIf="form['secondcountry'].errors && form['secondcountry'].errors['pattern']">Only letters are
+                  allowed</div>
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <div class="form-check">
+                <input type="checkbox" formControlName="saveToAddressBook" id="saveToAddressBook"
+                  class="form-check-input">
+                <label form-check-label class="form-check-label mx-1 mb-0 mt-0" for="saveToAddressBook">Save to your
+                  address Book</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 mb-5 d-flex flex-wrap justify-content-center justify-content-sm-end gap-3">
+        <button type="submit" class="btns-primary" (click)="onContinueClicked('billingInfo')">Continue<span
+            class="btn-icon"></span></button>
+        <div *ngIf="billingInformationForm.invalid && billingInformationForm.touched" class="error-message"></div>
+      </div>
+
+    </div>
+  </div>
+</form>
+
+<!-- shipping form-->
+<form *ngIf="current==1" [formGroup]="shippingInfoForm" (ngSubmit)="submit('shippingInfo')">
+  <div class="account-forms edit-account-forms mt-4">
+    <div class="form-fields-cotainer">
+      <h4 class="form-section-title mb-3">
+        #2 Shipping Information
+      </h4>
+      <div class="form-fields ">
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label class="d-block form-label d-none">Select an option</label>
+              <mat-form-field class="w-100">
+                <mat-select formControlName="selectedAddress" (selectionChange)="onShippingSelectionChange($event)">
+                  <mat-option value="copyFromAddressBook" (click)="copyBillingAddress()">Copy From Your Address Book</mat-option>
+                  <mat-option *ngFor="let address of addresses" [value]="address.idAddress">{{ address.forename
+                    }}</mat-option>
+                </mat-select>
+                <!-- <mat-select formControlName="selectedAddress" (selectionChange)="onBillingSelectionChange($event)">
+                  <mat-option value="copyFromAddressBook">Copy From Your Address Book</mat-option>
+                  <mat-option *ngFor="let address of addresses" [value]="address.idAddress">{{ address.forename
+                    }}</mat-option>
+                </mat-select> -->
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <button (click)="copyBillingAddress()" type="button" class="gray-btn">Copy from billing address</button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="first-name" class="d-block form-label">First Name<span
+                  class="asterisk text-danger ms-1">*</span></label>
+              <input id="first-name" type="text" formControlName="firstName" class="w-100 form-control">
+              <small *ngIf="shippingform['firstName'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="shippingform['firstName'].errors && shippingform['firstName'].errors['required']">firstName
+                  required </span>
+                <div *ngIf="shippingform['firstName'].errors && shippingform['firstName'].errors['minlength']">at least
+                  5
+                  character required
+                </div>
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="last-name" class="d-block form-label">Last Name<span
+                  class="asterisk text-danger ms-1">*</span> </label>
+              <input id="last-name" type="text" formControlName="lastName" class="w-100 form-control">
+              <small *ngIf="shippingform['lastName'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="shippingform['lastName'].errors && shippingform['lastName'].errors['required']">lastName
+                  required
+                </span>
+                <div *ngIf="shippingform['lastName'].errors && shippingform['lastName'].errors['minlength']">at least 5
+                  character required
+                </div>
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="last-name" class="d-block form-label">Company<span class="asterisk text-danger ms-1">*</span>
+              </label>
+              <input id="last-name" type="text" formControlName="company" class="w-100 form-control">
+              <small *ngIf="shippingform['company'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="shippingform['company'].errors && shippingform['company'].errors['required']">company
+                  required
+                </span>
+                <div *ngIf="shippingform['company'].errors && shippingform['company'].errors['minlength']">At least 1
+                  character
+                  required
+                </div>
+              </small>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="first-name" class="d-block form-label">Country<span
+                  class="asterisk text-danger ms-1">*</span></label>
+              <input id="first-name" type="text" formControlName="country" class="w-100 form-control">
+              <small *ngIf="shippingform['country'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="shippingform['country'].errors && shippingform['country'].errors['required']">Country
+                  required
+                </span>
+                <div *ngIf="shippingform['country'].errors && shippingform['country'].errors['minlength']">At least 5
+                  character
+                  required
+                </div>
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="last-name" class="d-block form-label">Address<span class="asterisk text-danger ms-1">*</span>
+              </label>
+              <input id="last-name" type="text" formControlName="address" class="w-100 form-control">
+              <small *ngIf="shippingform['address'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="shippingform['address'].errors && shippingform['address'].errors['required']">Address
+                  required
+                </span>
+                <div *ngIf="shippingform['address'].errors && shippingform['address'].errors['minlength']">At least 5
+                  character
+                  required
+                </div>
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="last-name" class="d-block form-label">Post Code<span
+                  class="asterisk text-danger ms-1">*</span>
+              </label>
+              <input id="last-name" type="text" formControlName="postCode" class="w-100 form-control">
+              <small *ngIf="shippingform['postCode'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="shippingform['postCode'].errors && shippingform['postCode'].errors['required']">PostCode
+                  required
+                </span>
+                <div *ngIf="shippingform['postCode'].errors && shippingform['postCode'].errors['minlength']">At least 1
+                  character required
+                </div>
+              </small>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="first-name" class="d-block form-label">City<span
+                  class="asterisk text-danger ms-1">*</span></label>
+              <input id="first-name" type="text" formControlName="city" class="w-100 form-control">
+              <small *ngIf="shippingform['city'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="shippingform['city'].errors && shippingform['city'].errors['required']">City required
+                </span>
+                <div *ngIf="shippingform['city'].errors && shippingform['city'].errors['minlength']">at least 5
+                  character
+                  required
+                </div>
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <label for="first-name" class="d-block form-label">Country<span
+                  class="asterisk text-danger ms-1">*</span></label>
+              <input id="first-name" type="text" formControlName="secondcountry" class="w-100 form-control">
+              <small *ngIf="form['secondcountry'].touched" class="form-text text-muted text-danger error">
+                <span *ngIf="form['secondcountry'].errors && form['secondcountry'].errors['required']">Country required
+                </span>
+                <div *ngIf="form['secondcountry'].errors && form['secondcountry'].errors['minlength']">at least 5
+                  character
+                  required
+                </div>
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="form-group mb-4">
+              <div class="form-check">
+                <input type="checkbox" formControlName="saveToAddressBook" id="saveToAddressBook"
+                  class="form-check-input">
+                <label form-check-label class="form-check-label mx-1 mb-0 mt-0" for="saveToAddressBook">Save to your
+                  address Book</label>
+              </div>
+              <div class="define-text my-1">Define as alias name to identify this address by</div>
+              <input formControlName="aliasName" class="w-100 form-control">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 mb-5 d-flex flex-wrap justify-content-center justify-content-sm-between gap-3">
+      <button type="button" (click)="goToStep(0)" class="btns-primary"><span class="btn-icon rotate-180"></span>
+        Back</button>
+      <button type="submit" class="btns-primary" (click)="onContinueClicked('shippingInfo')">Continue <span
+          class="btn-icon"></span></button>
+    </div>
+  </div>
+</form>
+
+<form *ngIf="current==2" [formGroup]="shippingMethodForm" (ngSubmit)="submit('shippingMethod')">
+  <div class="account-forms edit-account-forms mt-4">
+    <div class="form-fields-cotainer">
+      <h4 class="form-section-title mb-3">
+        #3 Shipping Method
+      </h4>
+      <div class="form-fields">
+        <label><b>Shipping methods for:</b> United Kingdom</label>
+        <div class="row my-2">
+          <div class="my-2" *ngFor="let option of shippingModes">
+            <div class="form-check">
+              <input type="radio" formControlName="shippingMethod" [value]="option.name" class="form-check-input"
+                (change)="updatePriceBasedOnShipping()" />
+              <label class="form-check-label mx-1 mb-0"> {{ option.name }} @ £0.00 </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 mb-5 d-flex flex-wrap justify-content-center justify-content-sm-between gap-3">
+        <button type="button" (click)="goToStep(1)" class="btns-primary"><span class="btn-icon rotate-180"></span>
+          Back</button>
+        <button type="submit" class="btns-primary" (click)="onContinueClicked('shippingMethod')">Continue <span
+            class="btn-icon"></span></button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="current==3">
+  <div class="account-forms edit-account-forms mt-4">
+    <div class="form-fields-cotainer">
+      <h4 class="form-section-title mb-3">
+        #4 Review Cart and Contact Details
+      </h4>
+      <form [formGroup]="contactDetailsForm" (ngSubmit)="submit('contact')">
+        <div class="form-fields ">
+          <div class="table-responsive checkout-tbl-container">
+            <table class="table table-bordered checkout-tbl">
+              <thead>
+                <tr>
+                  <th>Item description</th>
+                  <th>Price</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-end">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of cartProducts">
+                  <td><span class="procust-code"></span>{{ product.desc }}</td>
+                  <td class="txt-bold font16">{{currancyService.getCurrencySymbol(selectedCurrency)}}{{ product.sellPrice
+                    | number:'1.2-2'}}</td>
+                  <td class="txt-bold font16 text-center">{{ product.quantity }}</td>
+                  <td class="txt-bold font16 text-end">{{ currancyService.getCurrencySymbol(selectedCurrency)}}{{
+                    product.total | number:'1.2-2'}}</td>
+                </tr>
+                <tr class="highlight-row" *ngFor="let option of shippingModes">
+                  <td>Shipping: {{ option.name }} @</td>
+                  <td></td>
+                  <td></td>
+                  <td class="txt-bold font16 text-end">£0</td>
+                </tr>
+                <tr class="highlight-row">
+                  <td>Sub Total (ex. VAT):</td>
+                  <td></td>
+                  <td></td>
+                  <td class="txt-bold font16 text-end">{{
+                    currancyService.getCurrencySymbol(selectedCurrency)}}{{calculateSubTotalExcludingVAT()| number:'1.2-2'}}</td>
+                </tr>
+                <tr class="highlight-row">
+                  <td>VAT @ {{vatRate }}%:</td>
+                  <td></td>
+                  <td></td>
+                  <td class="txt-bold font16 text-end">{{ currancyService.getCurrencySymbol(selectedCurrency)}}{{vat |
+                    number:'1.2-2'}}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr class="grand-total">
+                  <td>Grand Total:</td>
+                  <td></td>
+                  <td></td>
+                  <td class="txt-bold font16 text-end">{{ currancyService.getCurrencySymbol(selectedCurrency)}}{{
+                    getTotalExcludingVAT() | number:'1.2-2'}}</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <label class="d-none">shipping methods for:united kingdom</label>
+          <div class="mt-4 ">
+            <div class="row">
+              <div class="col-md-6" *ngFor="let contact of mainAddressArray">
+                <div class="col-md-12 col-lg-10">
+                  <div class="form-group mb-4">
+                    <label class="form-label">Email<span class="asterisk text-danger ms-1">*</span></label>
+                    <input type="text" formControlName="email" [(ngModel)]="contact.email" class="w-100 form-control">
+                    <small class="text-danger error" *ngIf="isInvalid('email', 'required')">
+                      Email is required
+                    </small>
+                    <small class="text-danger error" *ngIf="isInvalid('email', 'pattern')">
+                      Please enter a valid email address
+                    </small>
+                  </div>
+                </div>
+                <div class="col-md-12 col-lg-10">
+                  <div class="form-group mb-4">
+                    <label class="form-label">Phone<span class="asterisk text-danger ms-1">*</span></label>
+                    <input type="text" formControlName="phone" [(ngModel)]="contact.telno" class="w-100 form-control">
+                    <small class="text-danger error" *ngIf="isInvalid('phone', 'required')">
+                      Phone number is required
+                    </small>
+                    <small class="text-danger error" *ngIf="isInvalid('phone', 'pattern')">
+                      Please enter a valid phone number (numeric, minimum 10 digits)
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label class="form-label">Order Comments / Notes<span
+                      class="asterisk text-danger ms-1"></span></label>
+                  <textarea type="text" formControlName="note" class="w-100 form-control h127"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 mb-5 d-flex flex-wrap justify-content-center justify-content-sm-between gap-3">
+          <button type="button" (click)="goToStep(2)" class="btns-primary"><span class="btn-icon rotate-180"></span>
+            Back</button>
+          <div class="d-flex gap-3">
+            <button type="button" [routerLink]="['/cart']" class="btns-primary">Edit Cart Items <span
+                class="btn-icon"></span></button>
+            <button type="submit" class="btns-primary" (click)="goToPaymentMethod()"
+              (click)="onContinueClicked('contactInfo')">Continue <span class="btn-icon"></span></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="current == 4">
+  <div class="account-forms edit-account-forms mt-4">
+    <div class="form-fields-cotainer">
+      <h4 class="form-section-title mb-3">
+        #5 Payment Method
+      </h4>
+      <form [formGroup]="paymentMethodForm" (ngSubmit)="submitPaymentMethodForm()">
+        <div class="form-fields ">
+          <h4 class="subtitle">Select Payment Method</h4>
+          <div class="select-payment-method">
+            <div class="mb-4">
+              <div class="my-2">
+                <div class="form-check">
+                  <input id="paymentMethod1" type="radio" formControlName="paymentMethod" value="1"
+                    (change)="paymentMethod(1)" class="form-check-input">
+                  <label for="paymentMethod1" class="form-check-label mx-1 mb-0">Pay via your Euro Findings credit
+                    account</label>
+                </div>
+              </div>
+
+              <div class="my-2">
+                <div class="form-check">
+                  <input id="paymentMethod2" type="radio" formControlName="paymentMethod" value="2"
+                    (change)="paymentMethod(3)" class="form-check-input">
+                  <label for="paymentMethod2" class="form-check-label mx-1 mb-0">Pay on collection</label>
+                </div>
+              </div>
+
+              <div class="my-2">
+                <div class="form-check">
+                  <input id="paymentMethod3" type="radio" formControlName="paymentMethod" value="3"
+                    (change)="paymentMethod(2)" class="form-check-input">
+                  <label for="paymentMethod3" class="form-check-label mx-1 mb-0">Pay via phone</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="payment-via-creatid-account" *ngIf="paymentMethodForm.get('paymentMethod')?.value === '1'">
+              <h3>Payment via Credit Account</h3>
+              <h4>You have selected to pay via a pre-setup credit account with Euro Mounts & Findings.</h4>
+              <p>This option is ONLY available to customers that have previously setup a credit agreement with
+                Euro Mounts & Findings.
+                Please do not select this option if you have never been given an account number.</p>
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="form-group mb-4 mt-2">
+                    <label>Account Number<span class="asterisk text-danger ms-1">*</span></label>
+                    <input type="text" formControlName="accountNumber" placeholder="Account Number"
+                      class="w-100 form-control">
+                    <div class="text-danger"
+                      *ngIf="paymentMethodForm.get('accountNumber')?.errors?.['required'] && paymentMethodForm.get('accountNumber')?.touched">
+                      Account Number is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="text-danger"
+              *ngIf="paymentMethodForm.get('accountNumber')?.errors?.['required'] && paymentMethodForm.get('accountNumber')?.touched">
+              Payment Method is required.
+            </div> -->
+
+            <div class="text-danger"
+              *ngIf="paymentMethodForm.get('paymentMethod')?.errors?.['required'] && paymentMethodForm.get('paymentMethod')?.touched">
+              Payment Method is required.
+            </div>
+
+
+            <div class="mt-4">
+              <h4 class="subtitle mb-1">Terms and Conditions</h4>
+              <div class="form-group mb-4">
+                <div class="form-check">
+                  <input type="checkbox" id="conditions" formControlName="acceptTerms" class="form-check-input">
+                  <label form-check-label for="conditions" class="form-check-label mx-1 my-0">
+                    I accept the <a [routerLink]="['/terms-conditions']" class="link-purpel">Terms and Conditions</a>
+                    <span class="asterisk text-danger ms-1">*</span>
+                  </label>
+                </div>
+                <div class="text-danger"
+                  *ngIf="paymentMethodForm.get('acceptTerms')?.errors?.['required'] && paymentMethodForm.get('acceptTerms')?.touched">
+                  You must accept the terms and conditions.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="mt-4 mb-5 d-flex flex-wrap justify-content-center justify-content-sm-between gap-3">
+          <button type="button" (click)="goToStep(3)" class="btns-primary"><span class="btn-icon rotate-180"></span>
+            Back</button>
+          <button type="submit" class="btns-primary" [disabled]="isConfirmDisabled()">Confirm Order <span
+              class="btn-icon"></span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

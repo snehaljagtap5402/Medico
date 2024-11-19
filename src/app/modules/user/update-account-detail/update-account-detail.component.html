@@ -1,0 +1,186 @@
+<div class="category-banner mb-4">
+  <div class="container h-100">
+    <div class="d-flex justify-content-between align-items-center h-100">
+      <div class="left">
+        <div class="bredcrumb">
+          <a href="#">Home</a> > <span>Update Account detail</span>
+        </div>
+        <h2 class="category-name">Update Account detail</h2>
+      </div>
+      <div class="right h-100">
+        <figure>
+          <img class="category-img mx-5" src="../../../../assets/images/dashboad-icon.png" alt="" />
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container account-forms edit-account-forms pb-5 pt-2">
+  <div class="col-xs-12">
+    <form [formGroup]="userForm" (ngSubmit)="saveUserDetails()">
+      <div>
+        <div class="form-fields-cotainer">
+          <h4 class="form-section-title mb-3">
+            <div class="d-flex align-items-center">
+              <span class="section-title-icon me-2">
+                <img src="../../../../assets/images/svg-icons/account-details-icon.svg" />
+              </span>
+              <span>Company Details</span>
+            </div>
+          </h4>
+          <div class="form-fields">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label>First Name<span class="required-text">*</span></label>
+                  <input type="text" class="form-control" formControlName="forenames">
+                  <small class="text-danger error" *ngIf="isInvalid('forenames', 'required')">
+                    First name is required
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('forenames', 'pattern')">
+                    Only alphabets are allowed
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('forenames', 'minlength')">
+                    Minimum length is 1 character
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('forenames', 'maxlength')">
+                    Maximum length is 50 characters
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('forenames', 'noWhitespace')">
+                    Spaces are not allowed
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('forenames', 'noNumbers')">
+                    Numbers are not allowed
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('forenames', 'noSpecialCharacters')">
+                    Special characters (except /) are not allowed
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label>Company</label>
+                  <input type="text" class="form-control" formControlName="custName">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <!-- <label>Last Name*</label>
+                  <input type="text" class="form-control" formControlName="name"> -->
+                  <label>Last Name<span class="required-text">*</span></label>
+                  <input type="text" class="form-control" formControlName="surname">
+                  <small class="text-danger error" *ngIf="isInvalid('surname', 'required')">
+                    Last name is required
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('surname', 'pattern')">
+                    Only alphabets are allowed
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('surname', 'minlength')">
+                    Minimum length is 1 character
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('surname', 'maxlength')">
+                    Maximum length is 50 characters
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('surname', 'noWhitespace')">
+                    Spaces are not allowed
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('surname', 'noNumbers')">
+                    Numbers are not allowed
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('surname', 'noSpecialCharacters')">
+                    Special characters (except /) are not allowed
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label>Primary Address</label>
+                  <input type="text" class="form-control" formControlName="addressLine1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-fields-cotainer">
+          <h4 class="form-section-title mb-3">
+            <div class="d-flex align-items-center">
+              <span class="section-title-icon me-2">
+                <i class="fa-solid fa-right-to-bracket"></i>
+              </span>
+              <span>Login Details</span>
+            </div>
+          </h4>
+          <div class="form-fields">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label>Email<span class="required-text">*</span></label>
+                  <input type="email" class="form-control" formControlName="email" readonly>
+                  <small class="text-danger error" *ngIf="isInvalid('email', 'required')">
+                    Email is required
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('email', 'pattern')">
+                    Please enter a valid email address
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <button class="btns-primary btns-sm" (click)="changePassword()">
+                    Change Password
+                  </button>
+
+                  <!-- <button type ="button" class="btns-primary btns-sm">
+                    Change Password
+                  </button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-fields-cotainer">
+          <h4 class="form-section-title mb-3">
+            <div class="d-flex align-items-center">
+              <span class="section-title-icon me-2">
+                <i class="fa-solid fa-address-book"></i>
+              </span>
+              <span>Contact Details</span>
+            </div>
+          </h4>
+          <div class="form-fields">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label>Phone<span class="required-text">*</span></label>
+                  <input type="text" class="form-control" formControlName="telno">
+                  <small class="text-danger error" *ngIf="isInvalid('telno', 'required')">
+                    Phone number is required
+                  </small>
+                  <small class="text-danger error" *ngIf="isInvalid('telno', 'pattern')">
+                    Please enter a valid phone number (numeric, minimum 10 digits)
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label>Post Code</label>
+                  <input type="text" class="form-control" formControlName="postcode">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 mb-5 d-flex flex-wrap justify-content-center justify-content-sm-end gap-3">
+          <button class="btns-primary" [routerLink]="['/user/dashboard']">
+            <span class="btn-icon rotate-180"></span> Cancel
+          </button>
+          <button class="btns-primary" type="submit" >
+            Update Account <span class="btn-icon"></span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

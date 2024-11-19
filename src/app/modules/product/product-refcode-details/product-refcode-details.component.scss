@@ -1,0 +1,46 @@
+@import '../../../../assets/scss/variables';
+
+p {
+    // font-family: Lato;
+    font-family: $base-font;
+    border-bottom: solid 1px #ebedef;
+    padding: 10px 15px 15px;
+    margin-bottom: 20px;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+
+p {
+    font-family: Lato;
+  }
+  
+  .divA {
+    height: 150px;
+    color: #fff;
+    background-color: #0bc;
+  }
+
+  .ring-size {
+    cursor: pointer;
+    padding: 8px;
+    margin: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .ring-size.selected {
+    background-color: #733a77; 
+    color: #fff; 
+  }
+  
+  .table-outer{
+    max-height:325px;
+    overflow-y:scroll;
+  }
+
+  .image-container {
+    display: none;
+  }
+  

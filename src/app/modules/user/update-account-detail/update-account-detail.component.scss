@@ -1,0 +1,17 @@
+/* insert-addresses.component.scss */
+.required-text {
+    color: red; 
+    margin-left: 3px;
+  }
+  
+  .whitespace-error {
+    color: red; /* Color for the whitespace error message */
+    font-size: 0.9em; /* Adjust font size as needed */
+  }
+  
+/* Override any conflicting styles */
+.form-control.readonly {
+  cursor: not-allowed !important; /* Change cursor to not-allowed to indicate that it's not editable */
+  pointer-events: none !important; /* Disable pointer events to prevent clicking or selecting */
+}
+

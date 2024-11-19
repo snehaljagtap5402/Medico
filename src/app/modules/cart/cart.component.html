@@ -1,0 +1,51 @@
+<div><span>Note:All weights,sizes and prices are based on estimates and are only to be used as a guide.</span></div>
+<div>  
+  <table mat-table [dataSource]="cartDetails" class="mat-elevation-z8">
+    <!-- Columns -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let product">
+        <div class="d-flex">
+          <div>
+            <img src="{{product.imgUrl}}" width="100">
+          </div>
+          <div class="my-auto">
+            <p>{{product.refcodes}}</p>
+            <p>{{product.description}}</p>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="totalprice">
+      <th mat-header-cell *matHeaderCellDef> TotalPrice </th>
+      <td mat-cell *matCellDef="let product"> {{ product.price }} </td>
+    </ng-container>
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef> Quantity </th>
+      <td mat-cell *matCellDef="let product">
+        <button mat-icon-button >
+          <mat-icon>remove</mat-icon>
+        </button>
+        <input type="number" [(ngModel)]="product.quantity" min="1" class="quantity-input" />
+        <button mat-icon-button >
+          <mat-icon>add</mat-icon>
+        </button>
+        {{product.quantity}}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let product"> {{ product.pricePerProduct }} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let product"> <i class="fa-solid fa-trash"></i> </td>
+    </ng-container>
+    <!-- Define the table rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<app-checkout-complete></app-checkout-complete>
+<app-print-order></app-print-order>

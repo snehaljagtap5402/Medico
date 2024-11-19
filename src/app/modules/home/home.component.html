@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="slider text-center">
+    <div>
+      <div class="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item" *ngFor="let slide of [1, 2]; let i = index" [class.active]="i === slideIndex">
+            <img *ngIf="slide === 1" src="/assets/images/header-full-1.jpg" alt="Slide 1">
+            <img *ngIf="slide === 2" src="/assets/images/header-full-2.jpg" alt="Slide 2">
+          </div>
+        </div>
+        
+        <a class="carousel-control-prev" role="button" (click)="onClickPrev()">
+          <span class="icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" role="button" (click)="onClickNext()">
+          <span class="icon" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="top-add mt-4 text-center">
+    <div class="row">
+      <div class="col-md-6">
+        <figure>
+          <img src="../../../../assets/images/add1.png" alt="" class="img-fluid" />
+        </figure>
+      </div>
+      <div class="col-md-6">
+        <figure>
+          <img src="../../../../assets/images/add2.png" alt="" class="img-fluid" />
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- all-products.component.html -->
+<div class="container mt-0 mb-5">
+  <app-all-products></app-all-products>
+  <div class="footer-heiglighted-category my-5">
+    <div class="">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
+          <div class="category-box category-box1">
+            <div class="d-flex align-items-center">
+              <div>
+                <h4>
+                  Findings
+                </h4>
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                </p>
+                <button class="btn btn-style btn-white">
+                  Buy Products <span class="arrow-icon"></span> 
+                </button>
+              </div>
+              <div class="category-img">
+                <figure>
+                  <img src="../../../../assets/images/finddings-banner.png" alt="" />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
+          <div class="category-box category-box2">
+            <div class="d-flex align-items-center">
+              <div>
+                <h4>
+                  New Semi Set Mounts
+                </h4>
+                <p>
+                  Lorem Ipsum is simply dummy text.
+                </p>
+                <button class="btn btn-style btn-white">
+                  Buy Products <span class="arrow-icon"></span>
+                </button>
+              </div>
+              <div class="category-img">
+                <figure>
+                  <img src="../../../../assets/images/mount-banner.png" alt="" />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="category-box category-box3">
+            <div class="d-flex align-items-center">
+              <div>
+                <h4>
+                  Ring Mounts
+                </h4>
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                </p>
+                <button class="btn btn-style btn-white">
+                  Buy Products <span class="arrow-icon"></span>
+                </button>
+              </div>
+              <div class="category-img">
+                <figure>
+                  <img src="../../../../assets/images/ring-mounts-banner.png" alt="" />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

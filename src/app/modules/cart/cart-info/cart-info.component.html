@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="category-banner mb-4">
+    <div class="container h-100">
+      <div class="d-flex justify-content-between align-items-center h-100">
+        <div class="left">
+          <div class="bredcrumb"><a href="#">Home</a> > <span>Cart</span></div>
+          <h2 class="category-name">Shopping Cart</h2>
+        </div>
+        <div class="right h-100">
+          <figure class="d-flex align-items-center">
+            <img class="category-img mx-5" src="../../../../assets/images/shoping-cart-img.png" alt="" />
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="product-notes mb-4 mx-2">
+    <p class="m-0">
+      <strong>Note:</strong> All weights,sizes and prices are based on estimates
+      and are only to be used as a guide.
+    </p>
+  </div>
+  <div class="checkout-container">
+    <div class="row">
+      <div class="col-md-8">
+        <app-cart [productId]="productId" [displayedColumns]="displayedColumns"
+         [ShippingRate]="ShippingRate" [vat]="vat" [grandToal]="grandToal"
+          [selected]="selected" (incrementQuantityEvent)="incrementQuantity($event)"
+          (decrementQuantityEvent)="decrementQuantity($event)" (removeFromCartEvent)="removeFromCart($event)"
+          (showcheckoutFormEvent)="showcheckout()" (quantityUpdated)="refreshCartDetails()">
+        </app-cart>
+      </div>
+      <div class="col-md-4">
+        <!-- <app-cart-summery
+          [totalOfAllItems]="getTotalOfAllItems()"
+          [getCurrencySymbol]="currencyService.getCurrencySymbol(selectedCurrency)"
+          [ShippingRate]="ShippingRate"
+          [grandToal]="grandToal"
+          [totalItem]="totalItem"
+          [totalPrice]="totalPrice"
+          [vat]="getVAT(calculateSubTotal())"
+          [ShippingRate]="ShippingRate"
+          [vat]="vat"
+          [vatRate]="vatRate"
+          [totalExcludingVAT]="getTotalExcludingVAT()"
+          [grandTotal]="calculateGrandTotal()"
+        >
+        </app-cart-summery> -->
+
+        <app-cart-summery class="col-lg-4 col-md-5"
+            [totalOfAllItems]="getTotalOfAllItems()"
+            [getCurrencySymbol]="getCurrencySymbol()" [ShippingRate]="ShippingRate" [grandToal]="grandToal"
+            [totalItem]="totalItem" [totalPrice]="totalPrice" [vat]="getVAT(calculateSubTotal())"
+            [ShippingRate]="ShippingRate" [vat]="vat" [vatRate]="vatRate" [totalExcludingVAT]="getTotalExcludingVAT()"
+            [grandTotal]="calculateGrandTotal()" (quantityUpdated)="refreshCartDetails()"  [showBillingInfo]="showBillingInfo"
+          >
+        </app-cart-summery>
+      </div>
+    </div>
+  </div>
+</div>

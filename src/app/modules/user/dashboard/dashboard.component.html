@@ -1,0 +1,311 @@
+<div class="category-banner mb-4">
+  <div class="container h-100">
+    <div class="d-flex justify-content-between align-items-center h-100">
+      <div class="left">
+        <div class="bredcrumb">
+          <a href="#">Home</a> > <span>Account</span>
+        </div>
+        <h2 class="category-name">User Dashboard</h2>
+      </div>
+      <div class="right h-100">
+        <figure>
+          <img class="category-img mx-5" src="../../../../assets/images/dashboad-icon.png" alt="" />
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container account-forms mb-5">
+  <div class="cart-box">
+    <div *ngIf="users">
+      <div class="row">
+        <div class="col-12">
+          <h4 class="form-section-title mb-0">
+            <div class="d-flex align-items-center">
+              <span class="section-title-icon me-2">
+                <img src="../../../../assets/images/svg-icons/account-details-icon.svg" />
+              </span>
+              <span>Account Details</span>
+
+            </div>
+          </h4>
+          <hr>
+          
+          <!-- {{this.userProfile | json}} -->
+
+      
+          <div *ngFor="let account of users" class="row">
+            <div class="col-md-3 mb-4">
+              <div class="form-group-container"> 
+                <div class="d-flex">
+                  <div class="form-icon me-2">
+                    <img src="../../../../assets/images/svg-icons/name-icon.svg" />
+                  </div>
+                  <div class="form-field">
+                    <label>Name</label>
+                    <div>{{ account.forenames }} {{ account.surname }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngFor="let account of users" class="col-md-3 mb-4">
+              <div class="form-group-container">
+                <div class="d-flex">
+                  <div class="form-icon me-2">
+                    <img src="../../../../assets/images/svg-icons/primary-address-icon.svg" />
+                  </div>
+                  <div class="form-field">
+                    <label>Primary Address</label>
+                    <div> {{ account.addressLine1}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngFor="let account of users" class="col-md-3 mb-4">
+              <div class="form-group-container">
+                <div class="d-flex">
+                  <div class="form-icon me-2">
+                    <img src="../../../../assets/images/svg-icons/email-address-icon.svg" />
+                  </div>
+                  <div class="form-field">
+                    <label>Email Address</label>
+                    <div>{{ account.email}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngFor="let account of users" class="col-md-3 mb-4">
+              <div class="form-group-container">
+                <div class="d-flex">
+                  <div class="form-icon me-2">
+                    <img src="../../../../assets/images/svg-icons/phone-number-icon.svg" />
+                  </div>
+                  <div class="form-field">
+                    <label>Phone Number</label>
+                    <div>{{ account.mobile}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngFor="let account of users" class="col-md-3 mb-4">
+              <div class="form-group-container">
+                <div class="d-flex">
+                  <div class="form-icon me-2">
+                    <img src="../../../../assets/images/svg-icons/company-name-icon.svg" />
+                  </div>
+                  <div class="form-field">
+                    <label>Company Name</label>
+                    <div> {{ account.custName}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngFor="let account of users" class="col-md-3 mb-4">
+              <div class="form-group-container">
+                <div class="d-flex">
+                  <div class="form-icon me-2">
+                    <img src="../../../../assets/images/svg-icons/post-code-icon.svg" />
+                  </div>
+                  <div class="form-field">
+                    <label>Post Code</label>
+                    <div> {{ account.postcode}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div *ngFor="let account of users" class="col-md-3 mb-4">
+              <div class="form-group-container">
+                <div class="d-flex">
+                  <div class="form-icon me-2">
+                    <img src="../../../../assets/images/svg-icons/newsletter-icon.svg" />
+                  </div>
+                  <div class="form-field">
+                    <label>Newsletter</label>
+                    <div><img src="../../../../assets/images/svg-icons/yes-green.svg" alt="" /> {{ account.newsLetter }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <!-- <div *ngFor="let user of users" class="d-flex justify-content-end">
+            <button [routerLink]="['update-account-detail', user.accountDetails.userId ]" class="btns-primary">
+              Update Account Details <span class="btn-icon"></span>
+            </button>
+          </div> -->
+          <div class="d-flex justify-content-end">
+            <button [routerLink]="['update-account-detail', idAccount]" class="btns-primary">
+              Update Account Details <span class="btn-icon"></span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-box address-book">
+    <div class="row">
+      <div class="col-12">
+        <h4 class="form-section-title mb-0">
+          <div class="d-flex align-items-center">
+            <span class="section-title-icon me-2"><img src="../../../../assets/images/svg-icons/address-book-icon.svg" /></span>
+            <span>Address Book</span>
+          </div>
+        </h4>
+        <hr>
+        <p class="my-4">By adding different addresses to your address book, you can quickly auto-fill the 'billing' and
+          'shipping' pages during the checkout process.</p>
+        <div class="table-responsive">
+          <table class="table table-header-drk">
+            <thead>
+              <tr>
+                <th>Alias</th>
+                <th>Recipient</th>
+                <th>Company</th>
+                <th>Post Code</th>
+                <th>Default</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngIf="addresses">
+                <tr *ngFor="let address of addresses; let i = index">
+                  <!-- <td></td> -->
+                  <td> <!-- Added Update column -->
+                    <a [routerLink]="['/update-address-detail', idAccount, address.idAddress]">{{ address.isMainAddress ? 'Default' : 'Primary' }}</a>
+                  </td>
+                  <td>{{ address.forename }} {{ address.surname }}</td>
+                  <td>{{ address.custName }}</td>
+                  <td>{{ address.postcode }}</td>
+                  <td>
+                    <label class="container">
+                      <!-- Display a checked checkbox if isMainAddress is true -->
+                      <input type="checkbox" [checked]="address.isMainAddress" disabled>
+                      <span class="checkmark rounded"></span>
+                    </label>
+                  </td>
+                  <td>
+                    <label class="container">
+                      <!-- <input type="checkbox" [checked]="address.isSelected" (change)="toggleAddressSelection(address)"> -->
+                      <input type="checkbox" [checked]="address.isSelected" [disabled]="address.isMainAddress" (change)="toggleAddressSelection(address)">
+                      <span class="checkmark circular"></span>
+                    </label>
+                  </td>
+                </tr>
+              </ng-container>   
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="addresses" class="mt-4 d-flex justify-content-end gap-3">
+          <button class="btns-primary" (click)="deleteCheckedAddresses()">
+            Delete Checked <span class="btn-icon"></span>
+          </button>
+          <button [routerLink]="['insert-addresses', idAccount]" class="btns-primary ">
+            Add New Address <span class="btn-icon"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-box">
+    <div class="row">
+      <div class="col-12">
+        <h4 class="form-section-title mb-0">
+          <div class="d-flex align-items-center">
+            <span class="section-title-icon me-2"><span class="section-title-icon me-2"><img src="../../../../assets/images/svg-icons/retailer-uplift-charge-icon.svg" /></span></span>
+            <span>
+              Retailer Uplift Charge</span>
+          </div>
+        </h4>
+        <hr>
+        <p class="my-4">The uplift charge tool is a feature that is aimed at retailers wishing to show their customers
+          items from our
+          website without revealing the wholesale price.
+          The feature allows you to define a percentage that will be applied to the wholesale price of all items.</p>
+        <h5 class="form-subtitle mb-2">Uplift Charge</h5>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="d-flex gap-2">
+              <div class="input-group-container flex-grow-1">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="newUpliftCharge"
+                   [(ngModel)]="upliftCharge"
+                   (keydown.enter)="updateUpliftCharge(upliftCharge)" >
+                  <span class="input-group-text">%</span>
+                </div>
+                <div class="input-note mt-2">Define the value as a percentage between 1% and 999%:</div>
+              </div>
+              <div class="updatebtn">
+                <button class="btns-primary but-update" (click)="updateUpliftCharge(upliftCharge)">
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="errorMessage" class="text-danger error">
+          {{ errorMessage }}
+        </div>
+        <div *ngIf="showMessage" class="message">
+          Data updated successfully
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-box address-book ">
+    <div class="row">
+      <div class="col-12">
+        <h4 class="form-section-title mb-0">
+          <div class="d-flex align-items-center">
+            <span class="section-title-icon me-2">
+              <img src="../../../../assets/images/svg-icons/recent-order-history-icon.svg" />
+            </span>
+            <span>
+              Recent Order History
+            </span>
+          </div>
+        </h4>
+        <hr>
+        <p>A summary of your most recent orders.</p>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order Information</th>
+                <th>Total Items</th>
+                <th>Subtotal</th>
+                <th>VAT</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr *ngFor="let order of ordersSummary.slice(0,3).reverse()">
+                <td>{{ order.orderDate }}<br>Order #: {{ order.orderId }}</td>
+                <td>{{ order.totalItems }}</td>
+                <td>{{ order.total| number:'1.2-2' | currency: 'GBP'}}</td>
+                <td>{{ order.vat | number:'1.2-2' | currency: 'GBP'}}</td>
+                <td>{{ order.subtotal | number:'1.2-2' | currency: 'GBP'}}</td>
+                <td>
+                  <button class="btns-primary" (click)="openOrderInNewTab(order.orderId)" style="font-size: 15px; height: 30px"> View</button>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <ng-container *ngIf="!ordersSummary || ordersSummary.length === 0">
+          <div class="text-center  mt-3 alert-box alert-box-warning mx-3 border-none">
+            There are no orders related to your account that are currently available to view.
+          </div>
+        </ng-container>
+        <div class="mt-4 d-flex justify-content-end gap-3">
+          <button [routerLink]="['view-orders']" class="btns-primary">
+            View All Orders <span class="btn-icon"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

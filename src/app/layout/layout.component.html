@@ -1,0 +1,20 @@
+<div *ngIf="isLoaderVisible()" class="leader-main">
+  <div class="d-flex h-100 justify-content-center align-items-center">
+    <div class="loader-animation">
+      <div class="back"></div>
+      <div class="front"></div>
+    </div>
+  </div>
+</div>
+
+<!-- the application -->
+  <div class="site-container">
+      <div class="site-header">
+          <header></header>
+      </div>
+      <div class="site-content" #siteContent>
+          <router-outlet></router-outlet>
+      </div>
+  </div>
+
+  <app-footer></app-footer>

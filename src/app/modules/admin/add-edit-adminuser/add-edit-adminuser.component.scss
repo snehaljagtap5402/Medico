@@ -1,0 +1,9 @@
+.required-text {
+  color: red; 
+  margin-left: 3px;
+}
+
+.form-control.readonly {
+  cursor: not-allowed !important; 
+  pointer-events: none !important; 
+}

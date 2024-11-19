@@ -1,0 +1,154 @@
+<div class="container ">
+    <div class="row">
+        <div class="col-md-6 mb-2 d-flex justify-content-center align-items-center">
+            <figure class="m-0">
+                <img src="assets/images/logo.png" alt="All About Euro" class="img-fluid logo-img" />
+            </figure>
+        </div>
+        <div class="col-md-6 mb-2 d-flex justify-content-center align-items-center">
+            <!-- Your address content goes here -->
+            <b>Euro Mounts & Findings<br>
+                Antwerp House, 26-27 Kirby Street<br>
+                London EC1N 8TE<br>
+                United Kingdom<br>
+                tel: 020 7404 5762</b>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mb-3 d-flex justify-content-center align-items-center">
+            <h3><b>Order Number</b> | {{ orderDetails?.orderId }}</h3>
+        </div>
+        <div class="col-md-4 mb-3 d-flex justify-content-center align-items-center">
+            <h3><b>Date</b> | {{ orderDetails?.cartItems[0].dateAdded | date: 'medium' }}</h3>
+        </div>
+        <div class="col-md-4 mb-3 d-flex justify-content-center align-items-center">
+            <h3><b>www.eurofindings.com</b><br>
+                info@eurofindings.com</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="table-responsive checkout-tbl-container">
+            <table class="table table-bordered checkout-tbl">
+                <thead>
+                    <tr>
+                        <th scope="col">Item Code</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Item Price</th>
+                        <th scope="col">Line Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of orderDetails?.cartItems; let i = index">
+                        <th scope="row">{{ item.refcodes }}</th>
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.pricePerProduct | currency:selectedCurrency }}</td>
+                        <td>{{ item.totalPrice | currency:selectedCurrency }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 mb-4 d-flex justify-content-center align-items-center">
+            <h3>Shipping: {{ orderDetails?.shipperMethod }}</h3>
+        </div>
+        <div class="col-md-3 mb-4 d-flex justify-content-center align-items-center">
+            <h3>{{ orderDetails?.shippingPrice | currency:selectedCurrency }}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 mb-4 d-flex justify-content-center align-items-center">
+            <h3>Nett</h3>
+        </div>
+        <div class="col-md-3 mb-4 d-flex justify-content-center align-items-center">
+            <h3>{{ orderDetails?.subtotal | currency:selectedCurrency }}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 mb-4 d-flex justify-content-center align-items-center">
+            <h3>VAT @ 20%</h3>
+        </div>
+        <div class="col-md-3 mb-4 d-flex justify-content-center align-items-center">
+            <h3>{{ orderDetails?.vat | currency:selectedCurrency }}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 mb-4 d-flex justify-content-center align-items-center">
+            <h3><b>Total</b></h3>
+        </div>
+        <div class="col-md-3 mb-4 d-flex justify-content-center align-items-center">
+            <h3><b>{{ orderDetails?.grandTotal | currency:selectedCurrency }}</b></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 mb-4 d-flex justify-content-center align-items-center">
+            <h3>Payment Via</h3>
+        </div>
+        <div class="col-md-3 mb-4 d-flex justify-content-center align-items-center">
+            <h3>{{ orderDetails?.paymentMethod }}</h3>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-3 mb-4 d-flex justify-content-center align-items-center">
+            <div class="col-md-12 my-4">
+                <div class="cart-box m-0 p-0 product-summary">
+                  
+                  <div class="product-summary-detail py-4">
+                    <h4 class="title">Billing Information</h4>
+                    <div *ngIf="billingDetails" class="ul-list">
+                      <ul>
+                        <li>{{ billingDetails.billerFristName }}</li>
+                        <li>{{ billingDetails.billerLastName }}</li>
+                        <li>{{ billingDetails.billerCompany }}</li>
+                        <li>{{ billingDetails.billerCounty }}</li>
+                        <li>{{ billingDetails.billerAddress }}</li>
+                        <li>{{ billingDetails.billerPostCode }}</li>
+                        <li>{{ billingDetails.billerCity }}</li>
+                        <li>{{ billingDetails.billerCountry }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-3 mb-4 d-flex justify-content-center align-items-center">
+            <div class="col-md-12 my-4">
+                <div class="cart-box m-0 p-0 product-summary">
+                  <div class="product-summary-detail py-4">
+                    <h4 class="title">Shipping Information</h4>
+                    <div *ngIf="shippingDetails" class="ul-list">
+                      <ul>
+                        <li>{{ shippingDetails.shipperFristName }}</li>
+                        <li>{{ shippingDetails.shipperLastName }}</li>
+                        <li>{{ shippingDetails.shipperCompany }}</li>
+                        <li>{{ shippingDetails.shipperCounty }}</li>
+                        <li>{{ shippingDetails.shipperAddress }}</li>
+                        <li>{{ shippingDetails.shipperPostCode }}</li>
+                        <li>{{ shippingDetails.shipperCity }}</li>
+                        <li>{{ shippingDetails.shipperCountry }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-3 mb-4 d-flex justify-content-center">
+            <div  class="col-md-12 my-4">
+                <div class="cart-box m-0 p-0 product-summary">
+                  <div class="product-summary-detail py-4">
+                    <h4 class="title">Contact Information</h4>
+                    <div *ngIf="contactDetail" class="ul-list">
+                      <ul>
+                        <li>{{ contactDetail.cartEmail }}</li>
+                        <li>{{ contactDetail.cartPhone }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

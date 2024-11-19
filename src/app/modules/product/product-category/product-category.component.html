@@ -1,0 +1,643 @@
+<div class="category-banner mb-4" onload="deskview();">
+  <div class="container h-100">
+    <div class="d-flex justify-content-between align-items-center h-100">
+      <div class="left">
+        <!-- <div class="bredcrumb">
+          <a href="#">Home</a> > <a href="#">Shanks</a> > <span>Split Shoulder</span>
+        </div> -->
+        
+        <h2 class="category-name">Shanks</h2>
+      </div>
+      <div class="right h-100">
+        <figure>
+          <img class="category-img mx-5" src="../../../../assets/images/svg-icons/cast-shanks.svg" alt="" />
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="product-category-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-lg-3">
+
+        <div class="filter-sidebar-outer mt-0 mt-md-3">
+
+          <div (click)="expandView()" class="d-block d-md-none filter-button">
+            <div class="filter-hed">
+              <div class="d-flex align-items-center justify-content-between">
+                <div><i class="fa-solid fa-bookmark me-2"></i> Cast Shanks</div>
+                <div><i class="fa-solid fa-bars ml-auto toggle-icon"></i></div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="visible" class="filter-sidebar-menu">
+            <div class="overlay" (click)="expandView()"></div>
+            <div class="accordion" id="accordionExample">
+              <div class="filter-sidebar-container">
+                <div class="filter-sidebar-hed d-none d-md-block ">
+                  <div class="d-flex align-items-center"><i class="fa-solid fa-clipboard-list me-2"></i> Cast Shanks
+                  </div>
+                </div>
+                <div class="filter-sidebar-inner">
+                  <div class="product-notes">
+                    <p class="m-0">Filters in bold have been applied.</p>
+                  </div>
+                  <div class="filter-box">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Metal Alloy
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                        <div class="accordion-body">
+                          <div class="filter-list">
+                            <ul class="list-items">
+                              <li class="list-item"><a href="#">Platinum (31)</a></li>
+                              <li class="list-item"><a href="#">18ct White Gold (34)</a></li>
+                              <li class="list-item"><a href="#">18ct Yellow Gold (34)</a></li>
+                              <li class="list-item"><a href="#">18ct Red Gold (5)</a></li>
+                              <li class="list-item"><a href="#">9ct White Gold (8)</a></li>
+                              <li class="list-item"><a href="#">9ct Yellow Gold (9)</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="filter-box">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                          Shank Profiles
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                        <div class="accordion-body">
+                          <div class="filter-list">
+                            <ul class="list-items">
+                              <li class="list-item"><a href="#">Tap-up (6)</a></li>
+                              <li class="list-item"><a href="#">Knife / Ridge Edge (7)</a></li>
+                              <li class="list-item"><a href="#">D-Shape (58)</a></li>
+                              <li class="list-item"><a href="#">Flat Tapered (20)</a></li>
+                              <li class="list-item"><a href="#">Flat Parallel (30)</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="filter-box">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                          Shank Styles
+                        </button>
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                        <div class="accordion-body">
+                          <div class="filter-list">
+                            <ul class="list-items">
+                              <li class="list-item active"><a href="#">Split Shoulder</a></li>
+                              <li class="list-item"><a href="#">Squared Shoulder (91)</a></li>
+                              <li class="list-item"><a href="#">Rounded Shoulder (34)</a></li>
+                              <li class="list-item"><a href="#">Pinched Shoulder (30)</a></li>
+                              <li class="list-item"><a href="#">Cross-over / Curved Shoulder (21)</a></li>
+                              <li class="list-item"><a href="#">Fancy / Pattern Shoulder (41)</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="filter-box">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                          Primary Stone Quantity
+                        </button>
+                      </h2>
+                      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingOne">
+                        <div class="accordion-body">
+                          <div class="filter-list">
+                            <ul class="list-items">
+                              <li class="list-item "><a href="#">Platinum (31)</a></li>
+                              <li class="list-item"><a href="#">18ct White Gold (34)</a></li>
+                              <li class="list-item"><a href="#">18ct Yellow Gold (34)</a></li>
+                              <li class="list-item"><a href="#">18ct Red Gold (5)</a></li>
+                              <li class="list-item"><a href="#">9ct White Gold (8)</a></li>
+                              <li class="list-item"><a href="#">9ct Yellow Gold (9)</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="filter-box">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseOne">
+                          Price Range
+                        </button>
+                      </h2>
+                      <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                        <div class="accordion-body">
+                          <div class="price-rage-outer">
+                            <div class="d-flex justify-content-between align-items-end gap-1">
+                              <div class="flex-grow-1">
+                                <div class="d-flex price-rage-input">
+                                  <div class="p-1">
+                                    <label>Min:</label>
+                                    <div class="input-group flex-nowrap">
+                                      <span class="input-group-text" id="addon-wrapping">£</span>
+                                      <input type="text" class="form-control" placeholder="-" aria-label="Username"
+                                        aria-describedby="addon-wrapping">
+                                    </div>
+                                  </div>
+                                  <div class="p-1">
+                                    <label>Max:</label>
+                                    <div class="input-group flex-nowrap">
+                                      <span class="input-group-text" id="addon-wrapping">£</span>
+                                      <input type="text" class="form-control" placeholder="-" aria-label="Username"
+                                        aria-describedby="addon-wrapping">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="filter-btn">
+                                <div class="p-1">
+                                  <button class="btns-primary"> <i class="fa-solid fa-filter"></i> </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="filter-box">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseOne">
+                          Gram Weight
+                        </button>
+                      </h2>
+                      <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                        <div class="accordion-body">
+                          <div class="price-rage-outer">
+                            <div class="d-flex justify-content-between align-items-end gap-1">
+                              <div class="flex-grow-1">
+                                <div class="d-flex price-rage-input">
+                                  <div class="p-1">
+                                    <label>Min:</label>
+                                    <div class="input-group flex-nowrap">
+                                      <input type="text" class="form-control" placeholder="-" aria-label="Username"
+                                        aria-describedby="addon-wrapping">
+                                      <span class="input-group-text" id="addon-wrapping">g</span>
+                                    </div>
+                                  </div>
+                                  <div class="p-1">
+                                    <label>Max:</label>
+                                    <div class="input-group flex-nowrap">
+                                      <input type="text" class="form-control" placeholder="-" aria-label="Username"
+                                        aria-describedby="addon-wrapping">
+                                      <span class="input-group-text" id="addon-wrapping">g</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="filter-btn">
+                                <div class="p-1">
+                                  <button class="btns-primary"> <i class="fa-solid fa-filter"></i> </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="filter-box">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button " type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseOne">
+                          Item Grouping
+                        </button>
+                      </h2>
+                      <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                        <div class="accordion-body">
+                          <div class="filter-list">
+                            <ul class="list-items">
+                              <li class="list-item "><a href="#">Show Items Ungrouped</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 col-lg-9">
+        <div class="pagination-container pt-3 pb-0 d-none d-lg-block">
+          <div class="d-flex flex-wrap justify-content-between align-items-center pagination-inner">
+            <div class="page-length">
+              <span class="font-bold">Show:</span> 15 items | Page 1 of 1
+            </div>
+            <div class="pagination">
+              <div class="d-flex align-items-center">
+                <span class="font-bold me-2">Show Items:</span>
+                <ul class="d-flex gap-2">
+                  <li><a href="#" class="current">15</a></li>
+                  <li><a href="#">30</a></li>
+                  <li><a href="#">45</a></li>
+                  <li><a href="#">60</a></li>
+                  <li><a href="#">90</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="page-dropdown">
+              <select class="form-control form-select" aria-label="Default select example">
+                <option selected>Popularity</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+          <div class="divider mb-2"></div>
+        </div>
+        <div class="product-row">
+          <div class="row">
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-silver-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-gold-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-silver-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-gold-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-silver-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-gold-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-silver-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-gold-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-silver-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-gold-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-silver-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-gold-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-silver-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-gold-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="product-boxes">
+                <div class="product-img">
+                  <img src="../../../../assets/images/shank-silver-stone.png" alt="" />
+                </div>
+                <h3 class="product-title">Split, Flat, Pinched tip shank - Single stone</h3>
+                <p>description for Product 1</p>
+                <div class="d-flex justify-content-between">
+                  <div class="price"> $179.16 ~ $290.97 </div>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div class="stars-style me-1"><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star</mat-icon><mat-icon
+                          role="img">star</mat-icon><mat-icon role="img">star_border</mat-icon>
+                      </div><span class="rating-number">4.0</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-container pb-0 pb-0">
+          <div class="divider mt-2"></div>
+          <div class="d-flex flex-wrap justify-content-between align-items-center pagination-inner">
+            <div class="page-length">
+              <span class="font-bold">Show:</span> 15 items | Page 1 of 1
+            </div>
+            <div class="pagination">
+              <div class="d-flex align-items-center pagination-numbers">
+                <span class="font-bold me-2">Show Items:</span>
+                <ul class="d-flex gap-2">
+                  <li><a href="#" class="current">15</a></li>
+                  <li><a href="#">30</a></li>
+                  <li><a href="#">45</a></li>
+                  <li><a href="#">60</a></li>
+                  <li><a href="#">90</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="page-dropdown">
+              <select class="form-control form-select" aria-label="Default select example">
+                <option selected>Popularity</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
